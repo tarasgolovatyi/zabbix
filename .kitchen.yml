@@ -1,0 +1,22 @@
+---
+driver:
+  name: docker
+  use_sudo: false
+
+provisioner:
+  name: chef_solo
+  cookbooks_path:
+    - cookbooks
+
+platforms:
+  - name: centos-7.1
+    driver_config:
+      image: centos:centos7
+      run_command: /usr/sbin/init
+      privileged: true
+
+suites:
+  - name: default
+    run_list:
+      - recipe[zabbix::default]
+    attributes:

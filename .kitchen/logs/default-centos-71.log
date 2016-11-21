@@ -1,0 +1,1370 @@
+I, [2016-11-19T18:55:11.443995 #114869]  INFO -- default-centos-71: -----> Cleaning up any prior instances of <default-centos-71>
+I, [2016-11-19T18:55:11.444126 #114869]  INFO -- default-centos-71: -----> Destroying <default-centos-71>...
+I, [2016-11-19T18:55:11.444672 #114869]  INFO -- default-centos-71: Finished destroying <default-centos-71> (0m0.00s).
+I, [2016-11-19T18:55:11.444822 #114869]  INFO -- default-centos-71: -----> Testing <default-centos-71>
+I, [2016-11-19T18:55:11.444886 #114869]  INFO -- default-centos-71: -----> Creating <default-centos-71>...
+I, [2016-11-19T18:55:12.203148 #114869]  INFO -- default-centos-71: Sending build context to Docker daemon 557.1 kBSending build context to Docker daemon 1.114 MBSending build context to Docker daemon 1.671 MBSending build context to Docker daemon 2.228 MBSending build context to Docker daemon 2.785 MBSending build context to Docker daemon 3.202 MB
+I, [2016-11-19T18:55:12.212104 #114869]  INFO -- default-centos-71: Step 1 : FROM centos:centos7
+I, [2016-11-19T18:55:12.243121 #114869]  INFO -- default-centos-71:  ---> 0584b3d2cf6d
+I, [2016-11-19T18:55:12.243186 #114869]  INFO -- default-centos-71: Step 2 : ENV container docker
+I, [2016-11-19T18:55:12.249013 #114869]  INFO -- default-centos-71:  ---> Using cache
+I, [2016-11-19T18:55:12.249058 #114869]  INFO -- default-centos-71:  ---> aacfeccf06fd
+I, [2016-11-19T18:55:12.249081 #114869]  INFO -- default-centos-71: Step 3 : RUN yum clean all
+I, [2016-11-19T18:55:12.249886 #114869]  INFO -- default-centos-71:  ---> Using cache
+I, [2016-11-19T18:55:12.249945 #114869]  INFO -- default-centos-71:  ---> 7eaf4812f62c
+I, [2016-11-19T18:55:12.249987 #114869]  INFO -- default-centos-71: Step 4 : RUN yum install -y sudo openssh-server openssh-clients which curl
+I, [2016-11-19T18:55:12.250781 #114869]  INFO -- default-centos-71:  ---> Using cache
+I, [2016-11-19T18:55:12.250813 #114869]  INFO -- default-centos-71:  ---> ee4332bf18e2
+I, [2016-11-19T18:55:12.250834 #114869]  INFO -- default-centos-71: Step 5 : RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
+I, [2016-11-19T18:55:12.251577 #114869]  INFO -- default-centos-71:  ---> Using cache
+I, [2016-11-19T18:55:12.251609 #114869]  INFO -- default-centos-71:  ---> 13d307e3e3f5
+I, [2016-11-19T18:55:12.251670 #114869]  INFO -- default-centos-71: Step 6 : RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key -N ''
+I, [2016-11-19T18:55:12.252471 #114869]  INFO -- default-centos-71:  ---> Using cache
+I, [2016-11-19T18:55:12.252504 #114869]  INFO -- default-centos-71:  ---> 48b9714acc69
+I, [2016-11-19T18:55:12.252527 #114869]  INFO -- default-centos-71: Step 7 : RUN if ! getent passwd kitchen; then                 useradd -d /home/kitchen -m -s /bin/bash -p '*' kitchen;               fi
+I, [2016-11-19T18:55:12.253294 #114869]  INFO -- default-centos-71:  ---> Using cache
+I, [2016-11-19T18:55:12.253354 #114869]  INFO -- default-centos-71:  ---> e3b5d00709f2
+I, [2016-11-19T18:55:12.253408 #114869]  INFO -- default-centos-71: Step 8 : RUN echo "kitchen ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+I, [2016-11-19T18:55:12.261857 #114869]  INFO -- default-centos-71:  ---> Using cache
+I, [2016-11-19T18:55:12.261913 #114869]  INFO -- default-centos-71:  ---> 3b5d8ab2ab6b
+I, [2016-11-19T18:55:12.261998 #114869]  INFO -- default-centos-71: Step 9 : RUN echo "Defaults !requiretty" >> /etc/sudoers
+I, [2016-11-19T18:55:12.262770 #114869]  INFO -- default-centos-71:  ---> Using cache
+I, [2016-11-19T18:55:12.262804 #114869]  INFO -- default-centos-71:  ---> 83a691a39f53
+I, [2016-11-19T18:55:12.262871 #114869]  INFO -- default-centos-71: Step 10 : RUN mkdir -p /home/kitchen/.ssh
+I, [2016-11-19T18:55:12.263660 #114869]  INFO -- default-centos-71:  ---> Using cache
+I, [2016-11-19T18:55:12.263692 #114869]  INFO -- default-centos-71:  ---> b4f146a2b4ac
+I, [2016-11-19T18:55:12.263713 #114869]  INFO -- default-centos-71: Step 11 : RUN chown -R kitchen /home/kitchen/.ssh
+I, [2016-11-19T18:55:12.264961 #114869]  INFO -- default-centos-71:  ---> Using cache
+I, [2016-11-19T18:55:12.264998 #114869]  INFO -- default-centos-71:  ---> 3d57350f37d1
+I, [2016-11-19T18:55:12.265042 #114869]  INFO -- default-centos-71: Step 12 : RUN chmod 0700 /home/kitchen/.ssh
+I, [2016-11-19T18:55:12.265866 #114869]  INFO -- default-centos-71:  ---> Using cache
+I, [2016-11-19T18:55:12.265894 #114869]  INFO -- default-centos-71:  ---> 55189de72439
+I, [2016-11-19T18:55:12.265914 #114869]  INFO -- default-centos-71: Step 13 : RUN touch /home/kitchen/.ssh/authorized_keys
+I, [2016-11-19T18:55:12.346907 #114869]  INFO -- default-centos-71:  ---> Using cache
+I, [2016-11-19T18:55:12.346986 #114869]  INFO -- default-centos-71:  ---> bda933b32caa
+I, [2016-11-19T18:55:12.347010 #114869]  INFO -- default-centos-71: Step 14 : RUN chown kitchen /home/kitchen/.ssh/authorized_keys
+I, [2016-11-19T18:55:12.371345 #114869]  INFO -- default-centos-71:  ---> Using cache
+I, [2016-11-19T18:55:12.371387 #114869]  INFO -- default-centos-71:  ---> 2ee29d638c51
+I, [2016-11-19T18:55:12.371410 #114869]  INFO -- default-centos-71: Step 15 : RUN chmod 0600 /home/kitchen/.ssh/authorized_keys
+I, [2016-11-19T18:55:12.388700 #114869]  INFO -- default-centos-71:  ---> Using cache
+I, [2016-11-19T18:55:12.388771 #114869]  INFO -- default-centos-71:  ---> 1214796d1158
+I, [2016-11-19T18:55:12.388796 #114869]  INFO -- default-centos-71: Step 16 : RUN echo ssh-rsa\ AAAAB3NzaC1yc2EAAAADAQABAAABAQCu0hOq542KEpxWg6hSk2boHZkaHagXFUETIuKQJqiXSf4ZJ6jnL0v07XxgTcRuGdy5wXEUbZfE4/B7MpDxUa3sPIlz0W6harqwUGULc3pgr0n641NZAS8z7swSPkl5WEu\+o\+UmkIuBrlm901KayShiL/7QBPFbKXvbLQ5uQ7s0/78YH9oTfC6H8F6mYMv/ZY9Bty3MqkCuQnV\+phQKTiHTZTTt/U0y3EneozsB6BX/krTUPpKvHpTmcIEzxRimRwsnoaoQBg2J\+CY68oojiHcv9epM0N\+IBNmHdImBHYUcADhbLMy1BGFVkSO4/60\+3VFINcejEm12gccHWLYQh5yB\ kitchen_docker_key >> /home/kitchen/.ssh/authorized_keys
+I, [2016-11-19T18:55:12.391931 #114869]  INFO -- default-centos-71:  ---> Using cache
+I, [2016-11-19T18:55:12.391976 #114869]  INFO -- default-centos-71:  ---> 6a254e69e6b8
+I, [2016-11-19T18:55:12.392000 #114869]  INFO -- default-centos-71: Successfully built 6a254e69e6b8
+I, [2016-11-19T18:55:17.113863 #114869]  INFO -- default-centos-71: 965942427d42f3613b342a9caf42814c689027e853c1ee5e991e6120604d3352
+I, [2016-11-19T18:55:18.776599 #114869]  INFO -- default-centos-71: 0.0.0.0:32812
+I, [2016-11-19T18:55:18.841862 #114869]  INFO -- default-centos-71: Waiting for SSH service on localhost:32812, retrying in 3 seconds
+I, [2016-11-19T18:55:21.852539 #114869]  INFO -- default-centos-71: Waiting for SSH service on localhost:32812, retrying in 3 seconds
+I, [2016-11-19T18:55:36.510875 #114869]  INFO -- default-centos-71: [SSH] Established
+I, [2016-11-19T18:55:36.512413 #114869]  INFO -- default-centos-71: Finished creating <default-centos-71> (0m25.07s).
+I, [2016-11-19T18:55:36.512492 #114869]  INFO -- default-centos-71: -----> Converging <default-centos-71>...
+I, [2016-11-19T18:55:36.513324 #114869]  INFO -- default-centos-71: Preparing files for transfer
+I, [2016-11-19T18:55:36.513419 #114869]  INFO -- default-centos-71: Preparing dna.json
+I, [2016-11-19T18:55:36.513795 #114869]  INFO -- default-centos-71: Preparing current project directory as a cookbook
+I, [2016-11-19T18:55:36.518871 #114869]  INFO -- default-centos-71: Removing non-cookbook files before transfer
+I, [2016-11-19T18:55:36.520582 #114869]  INFO -- default-centos-71: Preparing solo.rb
+I, [2016-11-19T18:55:36.571316 #114869]  INFO -- default-centos-71: -----> Installing Chef Omnibus (install only if missing)
+I, [2016-11-19T18:55:36.574231 #114869]  INFO -- default-centos-71: Downloading https://omnitruck.chef.io/install.sh to file /tmp/install.sh
+I, [2016-11-19T18:55:36.574289 #114869]  INFO -- default-centos-71: Trying curl...
+I, [2016-11-19T18:55:39.659205 #114869]  INFO -- default-centos-71: Download complete.
+I, [2016-11-19T18:55:39.712182 #114869]  INFO -- default-centos-71: el 7 x86_64
+I, [2016-11-19T18:55:39.712252 #114869]  INFO -- default-centos-71: Getting information for chef stable  for el...
+I, [2016-11-19T18:55:39.712276 #114869]  INFO -- default-centos-71: downloading https://omnitruck.chef.io/stable/chef/metadata?v=&p=el&pv=7&m=x86_64
+I, [2016-11-19T18:55:39.712305 #114869]  INFO -- default-centos-71:   to file /tmp/install.sh.107/metadata.txt
+I, [2016-11-19T18:55:39.712975 #114869]  INFO -- default-centos-71: trying curl...
+I, [2016-11-19T18:55:40.581001 #114869]  INFO -- default-centos-71: sha1	ee2d523b7a3dbd0599e69c68626193351c78f21f
+I, [2016-11-19T18:55:40.581080 #114869]  INFO -- default-centos-71: sha256	4adf75a32f4b417d4c6c764ebb7a5f1c746075da3d3e9a23465ce75f2926d34e
+I, [2016-11-19T18:55:40.581104 #114869]  INFO -- default-centos-71: url	https://packages.chef.io/files/stable/chef/12.16.42/el/7/chef-12.16.42-1.el7.x86_64.rpm
+I, [2016-11-19T18:55:40.581129 #114869]  INFO -- default-centos-71: version	12.16.42
+I, [2016-11-19T18:55:40.582703 #114869]  INFO -- default-centos-71: downloaded metadata file looks valid...
+I, [2016-11-19T18:55:40.605371 #114869]  INFO -- default-centos-71: downloading https://packages.chef.io/files/stable/chef/12.16.42/el/7/chef-12.16.42-1.el7.x86_64.rpm
+I, [2016-11-19T18:55:40.605437 #114869]  INFO -- default-centos-71:   to file /tmp/install.sh.107/chef-12.16.42-1.el7.x86_64.rpm
+I, [2016-11-19T18:55:40.606353 #114869]  INFO -- default-centos-71: trying curl...
+I, [2016-11-19T18:55:58.154735 #114869]  INFO -- default-centos-71: Comparing checksum with sha256sum...
+I, [2016-11-19T18:55:58.374051 #114869]  INFO -- default-centos-71: 
+I, [2016-11-19T18:55:58.374122 #114869]  INFO -- default-centos-71: WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+I, [2016-11-19T18:55:58.374145 #114869]  INFO -- default-centos-71: 
+I, [2016-11-19T18:55:58.374165 #114869]  INFO -- default-centos-71: You are installing an omnibus package without a version pin.  If you are installing
+I, [2016-11-19T18:55:58.374193 #114869]  INFO -- default-centos-71: on production servers via an automated process this is DANGEROUS and you will
+I, [2016-11-19T18:55:58.374213 #114869]  INFO -- default-centos-71: be upgraded without warning on new releases, even to new major releases.
+I, [2016-11-19T18:55:58.374232 #114869]  INFO -- default-centos-71: Letting the version float is only appropriate in desktop, test, development or
+I, [2016-11-19T18:55:58.374251 #114869]  INFO -- default-centos-71: CI/CD environments.
+I, [2016-11-19T18:55:58.374269 #114869]  INFO -- default-centos-71: 
+I, [2016-11-19T18:55:58.374291 #114869]  INFO -- default-centos-71: WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+I, [2016-11-19T18:55:58.374311 #114869]  INFO -- default-centos-71: 
+I, [2016-11-19T18:55:58.374329 #114869]  INFO -- default-centos-71: Installing chef 
+I, [2016-11-19T18:55:58.374347 #114869]  INFO -- default-centos-71: installing with rpm...
+I, [2016-11-19T18:55:58.472393 #114869]  INFO -- default-centos-71: warning: /tmp/install.sh.107/chef-12.16.42-1.el7.x86_64.rpm: Header V4 DSA/SHA1 Signature, key ID 83ef826a: NOKEY
+I, [2016-11-19T18:55:58.972409 #114869]  INFO -- default-centos-71: Preparing...                                                            (100%)#                                 (100%)##                                (100%)###                               (100%)####                              (100%)#####                             (100%)######                            (100%)#######                           (100%)########                          (100%)#########                         (100%)##########                        (100%)###########                       (100%)############                      (100%)#############                     (100%)##############                    (100%)###############                   (100%)################                  (100%)#################                 (100%)##################                (100%)###################               (100%)####################              (100%)#####################             (100%)######################            (100%)#######################           (100%)########################          (100%)#########################         (100%)##########################        (100%)###########################       (100%)############################      (100%)#############################     (100%)##############################    (100%)###############################   (100%)################################  (100%)################################# (100%)################################# [100%]
+I, [2016-11-19T18:55:58.976641 #114869]  INFO -- default-centos-71: Updating / installing...
+I, [2016-11-19T18:58:57.169602 #114869]  INFO -- default-centos-71:    1:chef-12.16.42-1.el7                                                (  1%)#                                 (  4%)##                                (  7%)###                               ( 10%)####                              ( 13%)#####                             ( 16%)######                            ( 19%)#######                           ( 22%)########                          ( 25%)#########                         ( 28%)##########                        ( 31%)###########                       ( 34%)############                      ( 37%)#############                     ( 40%)##############                    ( 43%)###############                   ( 46%)################                  ( 49%)#################                 ( 51%)##################                ( 54%)###################               ( 57%)####################              ( 60%)#####################             ( 63%)######################            ( 66%)#######################           ( 69%)########################          ( 72%)#########################         ( 75%)##########################        ( 78%)###########################       ( 81%)############################      ( 84%)#############################     ( 87%)##############################    ( 90%)###############################   ( 93%)################################  ( 96%)################################# ( 99%)################################# [100%]
+I, [2016-11-19T18:59:01.364360 #114869]  INFO -- default-centos-71: Thank you for installing Chef!
+I, [2016-11-19T18:59:03.518458 #114869]  INFO -- default-centos-71: Transferring files to <default-centos-71>
+I, [2016-11-19T18:59:07.502370 #114869]  INFO -- default-centos-71: Starting Chef Client, version 12.16.42
+I, [2016-11-19T18:59:08.558717 #114869]  INFO -- default-centos-71: [2016-11-19T16:59:08+00:00] WARN: unable to detect ipaddress
+I, [2016-11-19T18:59:09.927256 #114869]  INFO -- default-centos-71: Creating a new client identity for default-centos-71 using the validator key.
+I, [2016-11-19T18:59:10.206259 #114869]  INFO -- default-centos-71: resolving cookbooks for run list: ["zabbix::default"]
+I, [2016-11-19T18:59:10.241504 #114869]  INFO -- default-centos-71: Synchronizing Cookbooks:
+I, [2016-11-19T18:59:10.270156 #114869]  INFO -- default-centos-71:   - zabbix (0.1.5)
+I, [2016-11-19T18:59:10.281123 #114869]  INFO -- default-centos-71: Installing Cookbook Gems:
+I, [2016-11-19T18:59:10.281188 #114869]  INFO -- default-centos-71: Compiling Cookbooks...
+I, [2016-11-19T18:59:10.281586 #114869]  INFO -- default-centos-71: Converging 25 resources
+I, [2016-11-19T18:59:10.281614 #114869]  INFO -- default-centos-71: Recipe: zabbix::default
+I, [2016-11-19T18:59:58.415275 #114869]  INFO -- default-centos-71:   * yum_package[httpd] action install
+I, [2016-11-19T18:59:58.415349 #114869]  INFO -- default-centos-71:     - install version 2.4.6-40.el7.centos.4 of package httpd
+I, [2016-11-19T19:02:29.546911 #114869]  INFO -- default-centos-71:   * yum_package[httpd-devel] action install
+I, [2016-11-19T19:02:29.547257 #114869]  INFO -- default-centos-71:     - install version 2.4.6-40.el7.centos.4 of package httpd-devel
+I, [2016-11-19T19:02:32.384195 #114869]  INFO -- default-centos-71:   * yum_package[mysql-server] action install
+I, [2016-11-19T19:02:32.384265 #114869]  INFO -- default-centos-71:     - install version el7-5 of package mysql-server
+I, [2016-11-19T19:02:43.994432 #114869]  INFO -- default-centos-71:   * yum_package[mysql] action install[2016-11-19T17:02:43+00:00] WARN: yum_package[mysql] matched multiple Provides for mysql but we can only use the first match: mysql-community-client. Please use a more specific version.
+I, [2016-11-19T19:03:11.736619 #114869]  INFO -- default-centos-71: 
+I, [2016-11-19T19:03:11.736791 #114869]  INFO -- default-centos-71:     - install version 5.6.34-2.el7 of package mysql-community-client
+I, [2016-11-19T19:03:11.900967 #114869]  INFO -- default-centos-71:   * yum_package[mysql-server] action install[2016-11-19T17:03:11+00:00] WARN: yum_package[mysql-server] matched multiple Provides for mysql-server but we can only use the first match: mysql-community-server. Please use a more specific version.
+I, [2016-11-19T19:04:22.393004 #114869]  INFO -- default-centos-71: 
+I, [2016-11-19T19:04:22.393089 #114869]  INFO -- default-centos-71:     - install version 5.6.34-2.el7 of package mysql-community-server
+I, [2016-11-19T19:04:55.225218 #114869]  INFO -- default-centos-71:   * service[mysql] action start
+I, [2016-11-19T19:04:55.225294 #114869]  INFO -- default-centos-71:     - start service service[mysql]
+I, [2016-11-19T19:04:55.290399 #114869]  INFO -- default-centos-71:   * service[mysql] action enable (up to date)
+I, [2016-11-19T19:05:09.874082 #114869]  INFO -- default-centos-71:   * yum_package[php-mysql] action install
+I, [2016-11-19T19:05:09.874156 #114869]  INFO -- default-centos-71:     - install version 5.4.16-36.3.el7_2 of package php-mysql
+I, [2016-11-19T19:05:31.398502 #114869]  INFO -- default-centos-71:   * yum_package[php-pear] action install
+I, [2016-11-19T19:05:31.398596 #114869]  INFO -- default-centos-71:     - install version 1.9.4-21.el7 of package php-pear
+I, [2016-11-19T19:05:31.596939 #114869]  INFO -- default-centos-71:   * execute[run service mysql] action run
+I, [2016-11-19T19:05:31.597002 #114869]  INFO -- default-centos-71:     - execute sudo systemctl start mysql
+I, [2016-11-19T19:22:27.288400 #114869]  INFO -- default-centos-71:   * bash[set mysql] action run
+I, [2016-11-19T19:22:27.288508 #114869]  INFO -- default-centos-71:     - execute "bash"  "/tmp/chef-script20161119-218-hawbzq"
+I, [2016-11-19T19:22:28.497907 #114869]  INFO -- default-centos-71:   * yum_package[zabbix-agent] action install
+I, [2016-11-19T19:22:28.497979 #114869]  INFO -- default-centos-71:     - install version 3.2-1.el7 of package zabbix-agent
+I, [2016-11-19T19:22:53.394009 #114869]  INFO -- default-centos-71:   * yum_package[zabbix-agent] action install[2016-11-19T17:22:53+00:00] WARN: yum_package[zabbix-agent] matched multiple Provides for zabbix-agent but we can only use the first match: zabbix-agent. Please use a more specific version.
+I, [2016-11-19T19:23:08.067298 #114869]  INFO -- default-centos-71: 
+I, [2016-11-19T19:23:08.067385 #114869]  INFO -- default-centos-71:     - install version 3.2.1-1.el7 of package zabbix-agent
+I, [2016-11-19T19:23:08.230153 #114869]  INFO -- default-centos-71:   * yum_package[zabbix-server] action install[2016-11-19T17:23:08+00:00] WARN: yum_package[zabbix-server] matched multiple Provides for zabbix-server but we can only use the first match: zabbix-server-mysql. Please use a more specific version.
+I, [2016-11-19T19:23:51.224298 #114869]  INFO -- default-centos-71: 
+I, [2016-11-19T19:23:51.224379 #114869]  INFO -- default-centos-71:     - install version 3.2.1-1.el7 of package zabbix-server-mysql
+I, [2016-11-19T19:25:08.650697 #114869]  INFO -- default-centos-71:   * yum_package[zabbix-web-mysql] action install
+I, [2016-11-19T19:25:08.650765 #114869]  INFO -- default-centos-71:     - install version 3.2.1-1.el7 of package zabbix-web-mysql
+I, [2016-11-19T19:25:58.221882 #114869]  INFO -- default-centos-71:   * yum_package[zabbix-java-gateway] action install
+I, [2016-11-19T19:25:58.221961 #114869]  INFO -- default-centos-71:     - install version 3.2.1-1.el7 of package zabbix-java-gateway
+I, [2016-11-19T19:25:58.662476 #114869]  INFO -- default-centos-71:   * template[/etc/httpd/conf.d/zabbix.conf] action create
+I, [2016-11-19T19:25:58.662540 #114869]  INFO -- default-centos-71:     - update content in file /etc/httpd/conf.d/zabbix.conf from eda26b to 865be8
+I, [2016-11-19T19:25:58.662563 #114869]  INFO -- default-centos-71:     --- /etc/httpd/conf.d/zabbix.conf	2016-10-03 04:37:14.000000000 +0000
+I, [2016-11-19T19:25:58.662584 #114869]  INFO -- default-centos-71:     +++ /etc/httpd/conf.d/.chef-zabbix20161119-218-f0tz1j.conf	2016-11-19 17:25:58.657000000 +0000
+I, [2016-11-19T19:25:58.662603 #114869]  INFO -- default-centos-71:     @@ -16,7 +16,7 @@
+I, [2016-11-19T19:25:58.662657 #114869]  INFO -- default-centos-71:       php_value upload_max_filesize 2M
+I, [2016-11-19T19:25:58.662683 #114869]  INFO -- default-centos-71:       php_value max_input_time 300
+I, [2016-11-19T19:25:58.662707 #114869]  INFO -- default-centos-71:       php_value always_populate_raw_post_data -1
+I, [2016-11-19T19:25:58.662727 #114869]  INFO -- default-centos-71:     -        # php_value date.timezone Europe/Riga
+I, [2016-11-19T19:25:58.662746 #114869]  INFO -- default-centos-71:     +        php_value date.timezone Europe/Kiev
+I, [2016-11-19T19:25:58.662773 #114869]  INFO -- default-centos-71:   </IfModule>
+I, [2016-11-19T19:25:58.662792 #114869]  INFO -- default-centos-71:      </Directory>
+I, [2016-11-19T19:25:58.680222 #114869]  INFO -- default-centos-71:      
+I, [2016-11-19T19:26:01.174303 #114869]  INFO -- default-centos-71:   * service[httpd] action start
+I, [2016-11-19T19:26:01.174385 #114869]  INFO -- default-centos-71:     - start service service[httpd]
+I, [2016-11-19T19:26:01.299704 #114869]  INFO -- default-centos-71:   * service[httpd] action enable
+I, [2016-11-19T19:26:01.299775 #114869]  INFO -- default-centos-71:     - enable service service[httpd]
+I, [2016-11-19T19:26:01.299901 #114869]  INFO -- default-centos-71:   * file[/etc/zabbix/zabbix_agentd.conf] action delete
+I, [2016-11-19T19:26:01.299928 #114869]  INFO -- default-centos-71:     - delete file /etc/zabbix/zabbix_agentd.conf
+I, [2016-11-19T19:26:01.329801 #114869]  INFO -- default-centos-71:   * template[/etc/zabbix/zabbix_agentd.conf] action create
+I, [2016-11-19T19:26:01.329867 #114869]  INFO -- default-centos-71:     - create new file /etc/zabbix/zabbix_agentd.conf
+I, [2016-11-19T19:26:01.329892 #114869]  INFO -- default-centos-71:     - update content in file /etc/zabbix/zabbix_agentd.conf from none to 1c93c9
+I, [2016-11-19T19:26:01.329914 #114869]  INFO -- default-centos-71:     --- /etc/zabbix/zabbix_agentd.conf	2016-11-19 17:26:01.310000000 +0000
+I, [2016-11-19T19:26:01.329934 #114869]  INFO -- default-centos-71:     +++ /etc/zabbix/.chef-zabbix_agentd20161119-218-1kcgjkp.conf	2016-11-19 17:26:01.310000000 +0000
+I, [2016-11-19T19:26:01.329953 #114869]  INFO -- default-centos-71:     @@ -1 +1,401 @@
+I, [2016-11-19T19:26:01.329973 #114869]  INFO -- default-centos-71:     +# This is a configuration file for Zabbix agent daemon (Unix)
+I, [2016-11-19T19:26:01.329992 #114869]  INFO -- default-centos-71:     +# To get more information about Zabbix, visit http://www.zabbix.com
+I, [2016-11-19T19:26:01.330011 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.330043 #114869]  INFO -- default-centos-71:     +############ GENERAL PARAMETERS #################
+I, [2016-11-19T19:26:01.330068 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.330089 #114869]  INFO -- default-centos-71:     +### Option: PidFile
+I, [2016-11-19T19:26:01.330108 #114869]  INFO -- default-centos-71:     +#	Name of PID file.
+I, [2016-11-19T19:26:01.330126 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.330145 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.330164 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.330182 #114869]  INFO -- default-centos-71:     +# PidFile=/tmp/zabbix_agentd.pid
+I, [2016-11-19T19:26:01.330201 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.330220 #114869]  INFO -- default-centos-71:     +PidFile=/var/run/zabbix/zabbix_agentd.pid
+I, [2016-11-19T19:26:01.330239 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.330262 #114869]  INFO -- default-centos-71:     +### Option: LogType
+I, [2016-11-19T19:26:01.330281 #114869]  INFO -- default-centos-71:     +#	Specifies where log messages are written to:
+I, [2016-11-19T19:26:01.330301 #114869]  INFO -- default-centos-71:     +#		system  - syslog
+I, [2016-11-19T19:26:01.330320 #114869]  INFO -- default-centos-71:     +#		file    - file specified with LogFile parameter
+I, [2016-11-19T19:26:01.330342 #114869]  INFO -- default-centos-71:     +#		console - standard output
+I, [2016-11-19T19:26:01.330361 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.330380 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.330398 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.330416 #114869]  INFO -- default-centos-71:     +# LogType=file
+I, [2016-11-19T19:26:01.330435 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.330453 #114869]  INFO -- default-centos-71:     +### Option: LogFile
+I, [2016-11-19T19:26:01.330472 #114869]  INFO -- default-centos-71:     +#	Log file name for LogType 'file' parameter.
+I, [2016-11-19T19:26:01.330490 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.330508 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.330527 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.330545 #114869]  INFO -- default-centos-71:     +# LogFile=
+I, [2016-11-19T19:26:01.330563 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.330590 #114869]  INFO -- default-centos-71:     +LogFile=/var/log/zabbix/zabbix_agentd.log
+I, [2016-11-19T19:26:01.330610 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.330629 #114869]  INFO -- default-centos-71:     +### Option: LogFileSize
+I, [2016-11-19T19:26:01.330648 #114869]  INFO -- default-centos-71:     +#	Maximum size of log file in MB.
+I, [2016-11-19T19:26:01.330667 #114869]  INFO -- default-centos-71:     +#	0 - disable automatic log rotation.
+I, [2016-11-19T19:26:01.330685 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.330703 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.330721 #114869]  INFO -- default-centos-71:     +# Range: 0-1024
+I, [2016-11-19T19:26:01.330740 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.330758 #114869]  INFO -- default-centos-71:     +# LogFileSize=1
+I, [2016-11-19T19:26:01.330776 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.330798 #114869]  INFO -- default-centos-71:     +LogFileSize=0
+I, [2016-11-19T19:26:01.330817 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.330838 #114869]  INFO -- default-centos-71:     +### Option: DebugLevel
+I, [2016-11-19T19:26:01.330858 #114869]  INFO -- default-centos-71:     +#	Specifies debug level:
+I, [2016-11-19T19:26:01.330877 #114869]  INFO -- default-centos-71:     +#	0 - basic information about starting and stopping of Zabbix processes
+I, [2016-11-19T19:26:01.330900 #114869]  INFO -- default-centos-71:     +#	1 - critical information
+I, [2016-11-19T19:26:01.330919 #114869]  INFO -- default-centos-71:     +#	2 - error information
+I, [2016-11-19T19:26:01.330937 #114869]  INFO -- default-centos-71:     +#	3 - warnings
+I, [2016-11-19T19:26:01.330959 #114869]  INFO -- default-centos-71:     +#	4 - for debugging (produces lots of information)
+I, [2016-11-19T19:26:01.330978 #114869]  INFO -- default-centos-71:     +#	5 - extended debugging (produces even more information)
+I, [2016-11-19T19:26:01.330996 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.331014 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.331048 #114869]  INFO -- default-centos-71:     +# Range: 0-5
+I, [2016-11-19T19:26:01.331071 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.331089 #114869]  INFO -- default-centos-71:     +# DebugLevel=3
+I, [2016-11-19T19:26:01.331111 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.331130 #114869]  INFO -- default-centos-71:     +### Option: SourceIP
+I, [2016-11-19T19:26:01.331148 #114869]  INFO -- default-centos-71:     +#	Source IP address for outgoing connections.
+I, [2016-11-19T19:26:01.331165 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.331183 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.331205 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.331223 #114869]  INFO -- default-centos-71:     +# SourceIP=
+I, [2016-11-19T19:26:01.331241 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.331259 #114869]  INFO -- default-centos-71:     +### Option: EnableRemoteCommands
+I, [2016-11-19T19:26:01.331281 #114869]  INFO -- default-centos-71:     +#	Whether remote commands from Zabbix server are allowed.
+I, [2016-11-19T19:26:01.331300 #114869]  INFO -- default-centos-71:     +#	0 - not allowed
+I, [2016-11-19T19:26:01.331318 #114869]  INFO -- default-centos-71:     +#	1 - allowed
+I, [2016-11-19T19:26:01.331339 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.331358 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.331376 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.331398 #114869]  INFO -- default-centos-71:     +# EnableRemoteCommands=0
+I, [2016-11-19T19:26:01.331416 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.331433 #114869]  INFO -- default-centos-71:     +### Option: LogRemoteCommands
+I, [2016-11-19T19:26:01.331456 #114869]  INFO -- default-centos-71:     +#	Enable logging of executed shell commands as warnings.
+I, [2016-11-19T19:26:01.331476 #114869]  INFO -- default-centos-71:     +#	0 - disabled
+I, [2016-11-19T19:26:01.331493 #114869]  INFO -- default-centos-71:     +#	1 - enabled
+I, [2016-11-19T19:26:01.331516 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.331535 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.331552 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.331570 #114869]  INFO -- default-centos-71:     +# LogRemoteCommands=0
+I, [2016-11-19T19:26:01.331587 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.339726 #114869]  INFO -- default-centos-71:     +##### Passive checks related
+I, [2016-11-19T19:26:01.339788 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.339815 #114869]  INFO -- default-centos-71:     +### Option: Server
+I, [2016-11-19T19:26:01.339846 #114869]  INFO -- default-centos-71:     +#	List of comma delimited IP addresses (or hostnames) of Zabbix servers.
+I, [2016-11-19T19:26:01.339871 #114869]  INFO -- default-centos-71:     +#	Incoming connections will be accepted only from the hosts listed here.
+I, [2016-11-19T19:26:01.339897 #114869]  INFO -- default-centos-71:     +#	If IPv6 support is enabled then '127.0.0.1', '::127.0.0.1', '::ffff:127.0.0.1' are treated equally.
+I, [2016-11-19T19:26:01.339920 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.339942 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.339965 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.339993 #114869]  INFO -- default-centos-71:     +# Server=
+I, [2016-11-19T19:26:01.340015 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.340051 #114869]  INFO -- default-centos-71:     +Server=192.168.103.242
+I, [2016-11-19T19:26:01.340079 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.340103 #114869]  INFO -- default-centos-71:     +### Option: ListenPort
+I, [2016-11-19T19:26:01.340127 #114869]  INFO -- default-centos-71:     +#	Agent will listen on this port for connections from the server.
+I, [2016-11-19T19:26:01.340150 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.340172 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.340194 #114869]  INFO -- default-centos-71:     +# Range: 1024-32767
+I, [2016-11-19T19:26:01.340217 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.340239 #114869]  INFO -- default-centos-71:     +# ListenPort=10050
+I, [2016-11-19T19:26:01.340261 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.340287 #114869]  INFO -- default-centos-71:     +### Option: ListenIP
+I, [2016-11-19T19:26:01.340316 #114869]  INFO -- default-centos-71:     +#	List of comma delimited IP addresses that the agent should listen on.
+I, [2016-11-19T19:26:01.340343 #114869]  INFO -- default-centos-71:     +#	First IP address is sent to Zabbix server if connecting to it to retrieve list of active checks.
+I, [2016-11-19T19:26:01.340367 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.340389 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.340411 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.340434 #114869]  INFO -- default-centos-71:     +# ListenIP=0.0.0.0
+I, [2016-11-19T19:26:01.340454 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.340481 #114869]  INFO -- default-centos-71:     +### Option: StartAgents
+I, [2016-11-19T19:26:01.340503 #114869]  INFO -- default-centos-71:     +#	Number of pre-forked instances of zabbix_agentd that process passive checks.
+I, [2016-11-19T19:26:01.340527 #114869]  INFO -- default-centos-71:     +#	If set to 0, disables passive checks and the agent will not listen on any TCP port.
+I, [2016-11-19T19:26:01.340556 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.340586 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.340609 #114869]  INFO -- default-centos-71:     +# Range: 0-100
+I, [2016-11-19T19:26:01.340629 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.340651 #114869]  INFO -- default-centos-71:     +# StartAgents=3
+I, [2016-11-19T19:26:01.340676 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.340698 #114869]  INFO -- default-centos-71:     +##### Active checks related
+I, [2016-11-19T19:26:01.340726 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.340746 #114869]  INFO -- default-centos-71:     +### Option: ServerActive
+I, [2016-11-19T19:26:01.340768 #114869]  INFO -- default-centos-71:     +#	List of comma delimited IP:port (or hostname:port) pairs of Zabbix servers for active checks.
+I, [2016-11-19T19:26:01.340791 #114869]  INFO -- default-centos-71:     +#	If port is not specified, default port is used.
+I, [2016-11-19T19:26:01.340815 #114869]  INFO -- default-centos-71:     +#	IPv6 addresses must be enclosed in square brackets if port for that host is specified.
+I, [2016-11-19T19:26:01.340838 #114869]  INFO -- default-centos-71:     +#	If port is not specified, square brackets for IPv6 addresses are optional.
+I, [2016-11-19T19:26:01.340859 #114869]  INFO -- default-centos-71:     +#	If this parameter is not specified, active checks are disabled.
+I, [2016-11-19T19:26:01.340881 #114869]  INFO -- default-centos-71:     +#	Example: ServerActive=127.0.0.1:20051,zabbix.domain,[::1]:30051,::1,[12fc::1]
+I, [2016-11-19T19:26:01.340903 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.340925 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.340944 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.340970 #114869]  INFO -- default-centos-71:     +# ServerActive=
+I, [2016-11-19T19:26:01.340993 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.341012 #114869]  INFO -- default-centos-71:     +ServerActive=192.168.103.242
+I, [2016-11-19T19:26:01.341045 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.341069 #114869]  INFO -- default-centos-71:     +### Option: Hostname
+I, [2016-11-19T19:26:01.341093 #114869]  INFO -- default-centos-71:     +#	Unique, case sensitive hostname.
+I, [2016-11-19T19:26:01.341116 #114869]  INFO -- default-centos-71:     +#	Required for active checks and must match hostname as configured on the server.
+I, [2016-11-19T19:26:01.341136 #114869]  INFO -- default-centos-71:     +#	Value is acquired from HostnameItem if undefined.
+I, [2016-11-19T19:26:01.341158 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.341180 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.341204 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.341226 #114869]  INFO -- default-centos-71:     +# Hostname=
+I, [2016-11-19T19:26:01.341245 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.341267 #114869]  INFO -- default-centos-71:     +Hostname=965942427d42
+I, [2016-11-19T19:26:01.341286 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.341309 #114869]  INFO -- default-centos-71:     +### Option: HostnameItem
+I, [2016-11-19T19:26:01.341337 #114869]  INFO -- default-centos-71:     +#	Item used for generating Hostname if it is undefined. Ignored if Hostname is defined.
+I, [2016-11-19T19:26:01.341358 #114869]  INFO -- default-centos-71:     +#	Does not support UserParameters or aliases.
+I, [2016-11-19T19:26:01.341379 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.341398 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.341420 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.341439 #114869]  INFO -- default-centos-71:     +# HostnameItem=system.hostname
+I, [2016-11-19T19:26:01.341460 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.341479 #114869]  INFO -- default-centos-71:     +HostnameItem=system.hostname
+I, [2016-11-19T19:26:01.341505 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.341525 #114869]  INFO -- default-centos-71:     +### Option: HostMetadata
+I, [2016-11-19T19:26:01.341547 #114869]  INFO -- default-centos-71:     +#	Optional parameter that defines host metadata.
+I, [2016-11-19T19:26:01.341566 #114869]  INFO -- default-centos-71:     +#	Host metadata is used at host auto-registration process.
+I, [2016-11-19T19:26:01.341588 #114869]  INFO -- default-centos-71:     +#	An agent will issue an error and not start if the value is over limit of 255 characters.
+I, [2016-11-19T19:26:01.341607 #114869]  INFO -- default-centos-71:     +#	If not defined, value will be acquired from HostMetadataItem.
+I, [2016-11-19T19:26:01.341634 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.341653 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.341675 #114869]  INFO -- default-centos-71:     +# Range: 0-255 characters
+I, [2016-11-19T19:26:01.341693 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.341711 #114869]  INFO -- default-centos-71:     +# HostMetadata=
+I, [2016-11-19T19:26:01.341732 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.341755 #114869]  INFO -- default-centos-71:     +HostMetadata=Linux
+I, [2016-11-19T19:26:01.341774 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.341798 #114869]  INFO -- default-centos-71:     +### Option: HostMetadataItem
+I, [2016-11-19T19:26:01.341817 #114869]  INFO -- default-centos-71:     +#	Optional parameter that defines an item used for getting host metadata.
+I, [2016-11-19T19:26:01.341839 #114869]  INFO -- default-centos-71:     +#	Host metadata is used at host auto-registration process.
+I, [2016-11-19T19:26:01.341858 #114869]  INFO -- default-centos-71:     +#	During an auto-registration request an agent will log a warning message if
+I, [2016-11-19T19:26:01.341876 #114869]  INFO -- default-centos-71:     +#	the value returned by specified item is over limit of 255 characters.
+I, [2016-11-19T19:26:01.341899 #114869]  INFO -- default-centos-71:     +#	This option is only used when HostMetadata is not defined.
+I, [2016-11-19T19:26:01.341918 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.341935 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.341956 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.341975 #114869]  INFO -- default-centos-71:     +# HostMetadataItem=
+I, [2016-11-19T19:26:01.341993 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.342010 #114869]  INFO -- default-centos-71:     +HostMetadata=22df84bf21bf0be663090bb8d4158558aa9b95fba66a6dbf834f8b91ae5a08ae
+I, [2016-11-19T19:26:01.342048 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.342078 #114869]  INFO -- default-centos-71:     +### Option: RefreshActiveChecks
+I, [2016-11-19T19:26:01.342097 #114869]  INFO -- default-centos-71:     +#	How often list of active checks is refreshed, in seconds.
+I, [2016-11-19T19:26:01.342115 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.342136 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.342155 #114869]  INFO -- default-centos-71:     +# Range: 60-3600
+I, [2016-11-19T19:26:01.342173 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.342190 #114869]  INFO -- default-centos-71:     +# RefreshActiveChecks=120
+I, [2016-11-19T19:26:01.342208 #114869]  INFO -- default-centos-71:     +RefreshActiveChecks = 60
+I, [2016-11-19T19:26:01.342226 #114869]  INFO -- default-centos-71:     +### Option: BufferSend
+I, [2016-11-19T19:26:01.342248 #114869]  INFO -- default-centos-71:     +#	Do not keep data longer than N seconds in buffer.
+I, [2016-11-19T19:26:01.342266 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.342289 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.342308 #114869]  INFO -- default-centos-71:     +# Range: 1-3600
+I, [2016-11-19T19:26:01.342330 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.342349 #114869]  INFO -- default-centos-71:     +# BufferSend=5
+I, [2016-11-19T19:26:01.342366 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.342388 #114869]  INFO -- default-centos-71:     +### Option: BufferSize
+I, [2016-11-19T19:26:01.342406 #114869]  INFO -- default-centos-71:     +#	Maximum number of values in a memory buffer. The agent will send
+I, [2016-11-19T19:26:01.346416 #114869]  INFO -- default-centos-71:     +#	all collected data to Zabbix Server or Proxy if the buffer is full.
+I, [2016-11-19T19:26:01.346467 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.346494 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.346518 #114869]  INFO -- default-centos-71:     +# Range: 2-65535
+I, [2016-11-19T19:26:01.346541 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.346563 #114869]  INFO -- default-centos-71:     +# BufferSize=100
+I, [2016-11-19T19:26:01.346586 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.346609 #114869]  INFO -- default-centos-71:     +### Option: MaxLinesPerSecond
+I, [2016-11-19T19:26:01.346632 #114869]  INFO -- default-centos-71:     +#	Maximum number of new lines the agent will send per second to Zabbix Server
+I, [2016-11-19T19:26:01.346660 #114869]  INFO -- default-centos-71:     +#	or Proxy processing 'log' and 'logrt' active checks.
+I, [2016-11-19T19:26:01.346684 #114869]  INFO -- default-centos-71:     +#	The provided value will be overridden by the parameter 'maxlines',
+I, [2016-11-19T19:26:01.346708 #114869]  INFO -- default-centos-71:     +#	provided in 'log' or 'logrt' item keys.
+I, [2016-11-19T19:26:01.346734 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.346757 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.346780 #114869]  INFO -- default-centos-71:     +# Range: 1-1000
+I, [2016-11-19T19:26:01.346802 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.346825 #114869]  INFO -- default-centos-71:     +# MaxLinesPerSecond=20
+I, [2016-11-19T19:26:01.346848 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.346870 #114869]  INFO -- default-centos-71:     +############ ADVANCED PARAMETERS #################
+I, [2016-11-19T19:26:01.346893 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.346922 #114869]  INFO -- default-centos-71:     +### Option: Alias
+I, [2016-11-19T19:26:01.346946 #114869]  INFO -- default-centos-71:     +#	Sets an alias for an item key. It can be used to substitute long and complex item key with a smaller and simpler one.
+I, [2016-11-19T19:26:01.346969 #114869]  INFO -- default-centos-71:     +#	Multiple Alias parameters may be present. Multiple parameters with the same Alias key are not allowed.
+I, [2016-11-19T19:26:01.346992 #114869]  INFO -- default-centos-71:     +#	Different Alias keys may reference the same item key.
+I, [2016-11-19T19:26:01.347015 #114869]  INFO -- default-centos-71:     +#	For example, to retrieve the ID of user 'zabbix':
+I, [2016-11-19T19:26:01.347053 #114869]  INFO -- default-centos-71:     +#	Alias=zabbix.userid:vfs.file.regexp[/etc/passwd,^zabbix:.:([0-9]+),,,,\1]
+I, [2016-11-19T19:26:01.347082 #114869]  INFO -- default-centos-71:     +#	Now shorthand key zabbix.userid may be used to retrieve data.
+I, [2016-11-19T19:26:01.347106 #114869]  INFO -- default-centos-71:     +#	Aliases can be used in HostMetadataItem but not in HostnameItem parameters.
+I, [2016-11-19T19:26:01.347125 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.347156 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.347179 #114869]  INFO -- default-centos-71:     +# Range:
+I, [2016-11-19T19:26:01.347201 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.347224 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.347249 #114869]  INFO -- default-centos-71:     +### Option: Timeout
+I, [2016-11-19T19:26:01.347272 #114869]  INFO -- default-centos-71:     +#	Spend no more than Timeout seconds on processing
+I, [2016-11-19T19:26:01.347295 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.347317 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.347336 #114869]  INFO -- default-centos-71:     +# Range: 1-30
+I, [2016-11-19T19:26:01.347364 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.347386 #114869]  INFO -- default-centos-71:     +# Timeout=3
+I, [2016-11-19T19:26:01.347408 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.347428 #114869]  INFO -- default-centos-71:     +### Option: AllowRoot
+I, [2016-11-19T19:26:01.347451 #114869]  INFO -- default-centos-71:     +#	Allow the agent to run as 'root'. If disabled and the agent is started by 'root', the agent
+I, [2016-11-19T19:26:01.347474 #114869]  INFO -- default-centos-71:     +#	will try to switch to the user specified by the User configuration option instead.
+I, [2016-11-19T19:26:01.347497 #114869]  INFO -- default-centos-71:     +#	Has no effect if started under a regular user.
+I, [2016-11-19T19:26:01.347516 #114869]  INFO -- default-centos-71:     +#	0 - do not allow
+I, [2016-11-19T19:26:01.347538 #114869]  INFO -- default-centos-71:     +#	1 - allow
+I, [2016-11-19T19:26:01.347567 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.347586 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.347607 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.347629 #114869]  INFO -- default-centos-71:     +# AllowRoot=0
+I, [2016-11-19T19:26:01.347648 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.347669 #114869]  INFO -- default-centos-71:     +### Option: User
+I, [2016-11-19T19:26:01.347689 #114869]  INFO -- default-centos-71:     +#	Drop privileges to a specific, existing user on the system.
+I, [2016-11-19T19:26:01.347712 #114869]  INFO -- default-centos-71:     +#	Only has effect if run as 'root' and AllowRoot is disabled.
+I, [2016-11-19T19:26:01.347734 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.347753 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.347774 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.347796 #114869]  INFO -- default-centos-71:     +# User=zabbix
+I, [2016-11-19T19:26:01.347815 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.347836 #114869]  INFO -- default-centos-71:     +### Option: Include
+I, [2016-11-19T19:26:01.347856 #114869]  INFO -- default-centos-71:     +#	You may include individual files or all files in a directory in the configuration file.
+I, [2016-11-19T19:26:01.347878 #114869]  INFO -- default-centos-71:     +#	Installing Zabbix will create include directory in /usr/local/etc, unless modified during the compile time.
+I, [2016-11-19T19:26:01.347901 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.347926 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.347948 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.347967 #114869]  INFO -- default-centos-71:     +# Include=
+I, [2016-11-19T19:26:01.347988 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.348007 #114869]  INFO -- default-centos-71:     +Include=/etc/zabbix/zabbix_agentd.d/*.conf
+I, [2016-11-19T19:26:01.348028 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.348064 #114869]  INFO -- default-centos-71:     +# Include=/usr/local/etc/zabbix_agentd.userparams.conf
+I, [2016-11-19T19:26:01.348087 #114869]  INFO -- default-centos-71:     +# Include=/usr/local/etc/zabbix_agentd.conf.d/
+I, [2016-11-19T19:26:01.348107 #114869]  INFO -- default-centos-71:     +# Include=/usr/local/etc/zabbix_agentd.conf.d/*.conf
+I, [2016-11-19T19:26:01.348129 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.348155 #114869]  INFO -- default-centos-71:     +####### USER-DEFINED MONITORED PARAMETERS #######
+I, [2016-11-19T19:26:01.348184 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.348204 #114869]  INFO -- default-centos-71:     +### Option: UnsafeUserParameters
+I, [2016-11-19T19:26:01.348222 #114869]  INFO -- default-centos-71:     +#	Allow all characters to be passed in arguments to user-defined parameters.
+I, [2016-11-19T19:26:01.348245 #114869]  INFO -- default-centos-71:     +#	The following characters are not allowed:
+I, [2016-11-19T19:26:01.348264 #114869]  INFO -- default-centos-71:     +#	\ ' " ` * ? [ ] { } ~ $ ! & ; ( ) < > | # @
+I, [2016-11-19T19:26:01.348285 #114869]  INFO -- default-centos-71:     +#	Additionally, newline characters are not allowed.
+I, [2016-11-19T19:26:01.348305 #114869]  INFO -- default-centos-71:     +#	0 - do not allow
+I, [2016-11-19T19:26:01.348323 #114869]  INFO -- default-centos-71:     +#	1 - allow
+I, [2016-11-19T19:26:01.348345 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.348363 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.348384 #114869]  INFO -- default-centos-71:     +# Range: 0-1
+I, [2016-11-19T19:26:01.348408 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.348427 #114869]  INFO -- default-centos-71:     +# UnsafeUserParameters=0
+I, [2016-11-19T19:26:01.348448 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.348467 #114869]  INFO -- default-centos-71:     +### Option: UserParameter
+I, [2016-11-19T19:26:01.348485 #114869]  INFO -- default-centos-71:     +#	User-defined parameter to monitor. There can be several user-defined parameters.
+I, [2016-11-19T19:26:01.348506 #114869]  INFO -- default-centos-71:     +#	Format: UserParameter=<key>,<shell command>
+I, [2016-11-19T19:26:01.348525 #114869]  INFO -- default-centos-71:     +#	See 'zabbix_agentd' directory for examples.
+I, [2016-11-19T19:26:01.348543 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.348567 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.348589 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.348608 #114869]  INFO -- default-centos-71:     +# UserParameter=
+I, [2016-11-19T19:26:01.348625 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.348643 #114869]  INFO -- default-centos-71:     +####### LOADABLE MODULES #######
+I, [2016-11-19T19:26:01.348664 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.348683 #114869]  INFO -- default-centos-71:     +### Option: LoadModulePath
+I, [2016-11-19T19:26:01.348706 #114869]  INFO -- default-centos-71:     +#	Full path to location of agent modules.
+I, [2016-11-19T19:26:01.348725 #114869]  INFO -- default-centos-71:     +#	Default depends on compilation options.
+I, [2016-11-19T19:26:01.348746 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.348764 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.348782 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.348800 #114869]  INFO -- default-centos-71:     +# LoadModulePath=${libdir}/modules
+I, [2016-11-19T19:26:01.348817 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.348838 #114869]  INFO -- default-centos-71:     +### Option: LoadModule
+I, [2016-11-19T19:26:01.348857 #114869]  INFO -- default-centos-71:     +#	Module to load at agent startup. Modules are used to extend functionality of the agent.
+I, [2016-11-19T19:26:01.348881 #114869]  INFO -- default-centos-71:     +#	Format: LoadModule=<module.so>
+I, [2016-11-19T19:26:01.348899 #114869]  INFO -- default-centos-71:     +#	The modules must be located in directory specified by LoadModulePath.
+I, [2016-11-19T19:26:01.348917 #114869]  INFO -- default-centos-71:     +#	It is allowed to include multiple LoadModule parameters.
+I, [2016-11-19T19:26:01.348939 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.348957 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.348987 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.353916 #114869]  INFO -- default-centos-71:     +# LoadModule=
+I, [2016-11-19T19:26:01.353958 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.353983 #114869]  INFO -- default-centos-71:     +####### TLS-RELATED PARAMETERS #######
+I, [2016-11-19T19:26:01.354006 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.354029 #114869]  INFO -- default-centos-71:     +### Option: TLSConnect
+I, [2016-11-19T19:26:01.354076 #114869]  INFO -- default-centos-71:     +#	How the agent should connect to server or proxy. Used for active checks.
+I, [2016-11-19T19:26:01.354101 #114869]  INFO -- default-centos-71:     +#	Only one value can be specified:
+I, [2016-11-19T19:26:01.354124 #114869]  INFO -- default-centos-71:     +#		unencrypted - connect without encryption
+I, [2016-11-19T19:26:01.354148 #114869]  INFO -- default-centos-71:     +#		psk         - connect using TLS and a pre-shared key
+I, [2016-11-19T19:26:01.354178 #114869]  INFO -- default-centos-71:     +#		cert        - connect using TLS and a certificate
+I, [2016-11-19T19:26:01.354201 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.354224 #114869]  INFO -- default-centos-71:     +# Mandatory: yes, if TLS certificate or PSK parameters are defined (even for 'unencrypted' connection)
+I, [2016-11-19T19:26:01.354246 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.354266 #114869]  INFO -- default-centos-71:     +# TLSConnect=unencrypted
+I, [2016-11-19T19:26:01.354288 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.354311 #114869]  INFO -- default-centos-71:     +### Option: TLSAccept
+I, [2016-11-19T19:26:01.354334 #114869]  INFO -- default-centos-71:     +#	What incoming connections to accept.
+I, [2016-11-19T19:26:01.354357 #114869]  INFO -- default-centos-71:     +#	Multiple values can be specified, separated by comma:
+I, [2016-11-19T19:26:01.354379 #114869]  INFO -- default-centos-71:     +#		unencrypted - accept connections without encryption
+I, [2016-11-19T19:26:01.354408 #114869]  INFO -- default-centos-71:     +#		psk         - accept connections secured with TLS and a pre-shared key
+I, [2016-11-19T19:26:01.354432 #114869]  INFO -- default-centos-71:     +#		cert        - accept connections secured with TLS and a certificate
+I, [2016-11-19T19:26:01.354455 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.354477 #114869]  INFO -- default-centos-71:     +# Mandatory: yes, if TLS certificate or PSK parameters are defined (even for 'unencrypted' connection)
+I, [2016-11-19T19:26:01.354497 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.354519 #114869]  INFO -- default-centos-71:     +# TLSAccept=unencrypted
+I, [2016-11-19T19:26:01.354544 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.354567 #114869]  INFO -- default-centos-71:     +### Option: TLSCAFile
+I, [2016-11-19T19:26:01.354586 #114869]  INFO -- default-centos-71:     +#	Full pathname of a file containing the top-level CA(s) certificates for
+I, [2016-11-19T19:26:01.354609 #114869]  INFO -- default-centos-71:     +#	peer certificate verification.
+I, [2016-11-19T19:26:01.354630 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.354653 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.354672 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.354694 #114869]  INFO -- default-centos-71:     +# TLSCAFile=
+I, [2016-11-19T19:26:01.354717 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.354739 #114869]  INFO -- default-centos-71:     +### Option: TLSCRLFile
+I, [2016-11-19T19:26:01.354761 #114869]  INFO -- default-centos-71:     +#	Full pathname of a file containing revoked certificates.
+I, [2016-11-19T19:26:01.354794 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.354816 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.354842 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.354866 #114869]  INFO -- default-centos-71:     +# TLSCRLFile=
+I, [2016-11-19T19:26:01.354888 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.354907 #114869]  INFO -- default-centos-71:     +### Option: TLSServerCertIssuer
+I, [2016-11-19T19:26:01.354929 #114869]  INFO -- default-centos-71:     +#      Allowed server certificate issuer.
+I, [2016-11-19T19:26:01.354951 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.354970 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.354992 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.355014 #114869]  INFO -- default-centos-71:     +# TLSServerCertIssuer=
+I, [2016-11-19T19:26:01.355044 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.355072 #114869]  INFO -- default-centos-71:     +### Option: TLSServerCertSubject
+I, [2016-11-19T19:26:01.355096 #114869]  INFO -- default-centos-71:     +#      Allowed server certificate subject.
+I, [2016-11-19T19:26:01.355115 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.355137 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.355157 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.355184 #114869]  INFO -- default-centos-71:     +# TLSServerCertSubject=
+I, [2016-11-19T19:26:01.355206 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.355225 #114869]  INFO -- default-centos-71:     +### Option: TLSCertFile
+I, [2016-11-19T19:26:01.355252 #114869]  INFO -- default-centos-71:     +#	Full pathname of a file containing the agent certificate or certificate chain.
+I, [2016-11-19T19:26:01.355271 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.355293 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.355320 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.355339 #114869]  INFO -- default-centos-71:     +# TLSCertFile=
+I, [2016-11-19T19:26:01.355361 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.355380 #114869]  INFO -- default-centos-71:     +### Option: TLSKeyFile
+I, [2016-11-19T19:26:01.355401 #114869]  INFO -- default-centos-71:     +#	Full pathname of a file containing the agent private key.
+I, [2016-11-19T19:26:01.355420 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.355442 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.355477 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.355501 #114869]  INFO -- default-centos-71:     +# TLSKeyFile=
+I, [2016-11-19T19:26:01.355520 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.355541 #114869]  INFO -- default-centos-71:     +### Option: TLSPSKIdentity
+I, [2016-11-19T19:26:01.355566 #114869]  INFO -- default-centos-71:     +#	Unique, case sensitive string used to identify the pre-shared key.
+I, [2016-11-19T19:26:01.355589 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.355612 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.355641 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.355663 #114869]  INFO -- default-centos-71:     +# TLSPSKIdentity=
+I, [2016-11-19T19:26:01.355685 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.355708 #114869]  INFO -- default-centos-71:     +### Option: TLSPSKFile
+I, [2016-11-19T19:26:01.355732 #114869]  INFO -- default-centos-71:     +#	Full pathname of a file containing the pre-shared key.
+I, [2016-11-19T19:26:01.355751 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.355770 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.355791 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.355810 #114869]  INFO -- default-centos-71:     +# TLSPSKFile=
+I, [2016-11-19T19:26:01.355837 #114869]  INFO -- default-centos-71:     - change mode from '' to '0644'
+I, [2016-11-19T19:26:01.355864 #114869]  INFO -- default-centos-71:     - change owner from '' to 'root'
+I, [2016-11-19T19:26:01.355888 #114869]  INFO -- default-centos-71:     - change group from '' to 'root'
+I, [2016-11-19T19:26:01.355907 #114869]  INFO -- default-centos-71:   * file[/etc/zabbix/zabbix_java-gateway.conf] action delete (up to date)
+I, [2016-11-19T19:26:01.355926 #114869]  INFO -- default-centos-71:   * template[/etc/zabbix/zabbix_java_gateway.conf] action create
+I, [2016-11-19T19:26:01.355948 #114869]  INFO -- default-centos-71:     - update content in file /etc/zabbix/zabbix_java_gateway.conf from c20b09 to 90fb26
+I, [2016-11-19T19:26:01.355967 #114869]  INFO -- default-centos-71:     --- /etc/zabbix/zabbix_java_gateway.conf	2016-10-03 05:02:15.000000000 +0000
+I, [2016-11-19T19:26:01.355988 #114869]  INFO -- default-centos-71:     +++ /etc/zabbix/.chef-zabbix_java_gateway20161119-218-1nsfk7e.conf	2016-11-19 17:26:01.333000000 +0000
+I, [2016-11-19T19:26:01.356007 #114869]  INFO -- default-centos-71:     @@ -8,6 +8,8 @@
+I, [2016-11-19T19:26:01.356024 #114869]  INFO -- default-centos-71:      # Default:
+I, [2016-11-19T19:26:01.356061 #114869]  INFO -- default-centos-71:      # LISTEN_IP="0.0.0.0"
+I, [2016-11-19T19:26:01.356087 #114869]  INFO -- default-centos-71:      
+I, [2016-11-19T19:26:01.356105 #114869]  INFO -- default-centos-71:     +LISTEN_IP="0.0.0.0
+I, [2016-11-19T19:26:01.356123 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.356149 #114869]  INFO -- default-centos-71:      ### Option: zabbix.listenPort
+I, [2016-11-19T19:26:01.356169 #114869]  INFO -- default-centos-71:      #	Port to listen on.
+I, [2016-11-19T19:26:01.356186 #114869]  INFO -- default-centos-71:      #
+I, [2016-11-19T19:26:01.356204 #114869]  INFO -- default-centos-71:     @@ -16,6 +18,8 @@
+I, [2016-11-19T19:26:01.356225 #114869]  INFO -- default-centos-71:      # Default:
+I, [2016-11-19T19:26:01.356244 #114869]  INFO -- default-centos-71:      # LISTEN_PORT=10052
+I, [2016-11-19T19:26:01.356261 #114869]  INFO -- default-centos-71:      
+I, [2016-11-19T19:26:01.356279 #114869]  INFO -- default-centos-71:     +LISTEN_PORT=10052
+I, [2016-11-19T19:26:01.356299 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.356323 #114869]  INFO -- default-centos-71:      ### Option: zabbix.pidFile
+I, [2016-11-19T19:26:01.356342 #114869]  INFO -- default-centos-71:      #	Name of PID file.
+I, [2016-11-19T19:26:01.356359 #114869]  INFO -- default-centos-71:      #	If omitted, Zabbix Java Gateway is started as a console application.
+I, [2016-11-19T19:26:01.356382 #114869]  INFO -- default-centos-71:     @@ -34,13 +38,14 @@
+I, [2016-11-19T19:26:01.356404 #114869]  INFO -- default-centos-71:      # Default:
+I, [2016-11-19T19:26:01.356422 #114869]  INFO -- default-centos-71:      # START_POLLERS=5
+I, [2016-11-19T19:26:01.356440 #114869]  INFO -- default-centos-71:      
+I, [2016-11-19T19:26:01.356457 #114869]  INFO -- default-centos-71:     +START_POLLERS=5
+I, [2016-11-19T19:26:01.356474 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.356496 #114869]  INFO -- default-centos-71:      ### Option: zabbix.timeout
+I, [2016-11-19T19:26:01.356519 #114869]  INFO -- default-centos-71:      #	How long to wait for network operations.
+I, [2016-11-19T19:26:01.356541 #114869]  INFO -- default-centos-71:      #
+I, [2016-11-19T19:26:01.356562 #114869]  INFO -- default-centos-71:      # Mandatory: no
+I, [2016-11-19T19:26:01.356580 #114869]  INFO -- default-centos-71:      # Range: 1-30
+I, [2016-11-19T19:26:01.356603 #114869]  INFO -- default-centos-71:      # Default:
+I, [2016-11-19T19:26:01.356620 #114869]  INFO -- default-centos-71:     -# TIMEOUT=3
+I, [2016-11-19T19:26:01.356637 #114869]  INFO -- default-centos-71:     +TIMEOUT=30
+I, [2016-11-19T19:26:01.356654 #114869]  INFO -- default-centos-71:      
+I, [2016-11-19T19:26:01.356675 #114869]  INFO -- default-centos-71:     -TIMEOUT=3
+I, [2016-11-19T19:26:01.368105 #114869]  INFO -- default-centos-71:   * file[/etc/zabbix/zabbix_server.conf] action delete
+I, [2016-11-19T19:26:01.368170 #114869]  INFO -- default-centos-71:     - delete file /etc/zabbix/zabbix_server.conf
+I, [2016-11-19T19:26:01.373062 #114869]  INFO -- default-centos-71:   * template[/etc/zabbix/zabbix_server.conf] action create
+I, [2016-11-19T19:26:01.373112 #114869]  INFO -- default-centos-71:     - create new file /etc/zabbix/zabbix_server.conf
+I, [2016-11-19T19:26:01.373141 #114869]  INFO -- default-centos-71:     - update content in file /etc/zabbix/zabbix_server.conf from none to a0323b
+I, [2016-11-19T19:26:01.373192 #114869]  INFO -- default-centos-71:     --- /etc/zabbix/zabbix_server.conf	2016-11-19 17:26:01.359000000 +0000
+I, [2016-11-19T19:26:01.373215 #114869]  INFO -- default-centos-71:     +++ /etc/zabbix/.chef-zabbix_server20161119-218-1n217ue.conf	2016-11-19 17:26:01.359000000 +0000
+I, [2016-11-19T19:26:01.373234 #114869]  INFO -- default-centos-71:     @@ -1 +1,640 @@
+I, [2016-11-19T19:26:01.373254 #114869]  INFO -- default-centos-71:     +# This is a configuration file for Zabbix server daemon
+I, [2016-11-19T19:26:01.373273 #114869]  INFO -- default-centos-71:     +# To get more information about Zabbix, visit http://www.zabbix.com
+I, [2016-11-19T19:26:01.373292 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.373311 #114869]  INFO -- default-centos-71:     +############ GENERAL PARAMETERS #################
+I, [2016-11-19T19:26:01.373329 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.373348 #114869]  INFO -- default-centos-71:     +### Option: ListenPort
+I, [2016-11-19T19:26:01.373367 #114869]  INFO -- default-centos-71:     +#	Listen port for trapper.
+I, [2016-11-19T19:26:01.373386 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.373404 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.373423 #114869]  INFO -- default-centos-71:     +# Range: 1024-32767
+I, [2016-11-19T19:26:01.373442 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.373460 #114869]  INFO -- default-centos-71:     +# ListenPort=10050
+I, [2016-11-19T19:26:01.373914 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.373937 #114869]  INFO -- default-centos-71:     +### Option: SourceIP
+I, [2016-11-19T19:26:01.373956 #114869]  INFO -- default-centos-71:     +#	Source IP address for outgoing connections.
+I, [2016-11-19T19:26:01.373974 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.373993 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.374012 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.374041 #114869]  INFO -- default-centos-71:     +# SourceIP=
+I, [2016-11-19T19:26:01.374066 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.374086 #114869]  INFO -- default-centos-71:     +### Option: LogType
+I, [2016-11-19T19:26:01.374113 #114869]  INFO -- default-centos-71:     +#	Specifies where log messages are written to:
+I, [2016-11-19T19:26:01.374133 #114869]  INFO -- default-centos-71:     +#		system  - syslog
+I, [2016-11-19T19:26:01.374152 #114869]  INFO -- default-centos-71:     +#		file    - file specified with LogFile parameter
+I, [2016-11-19T19:26:01.374171 #114869]  INFO -- default-centos-71:     +#		console - standard output
+I, [2016-11-19T19:26:01.374189 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.374207 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.374224 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.374242 #114869]  INFO -- default-centos-71:     +# LogType=file
+I, [2016-11-19T19:26:01.374259 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.374277 #114869]  INFO -- default-centos-71:     +### Option: LogFile
+I, [2016-11-19T19:26:01.374295 #114869]  INFO -- default-centos-71:     +#	Log file name for LogType 'file' parameter.
+I, [2016-11-19T19:26:01.374313 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.374330 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.374356 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.374375 #114869]  INFO -- default-centos-71:     +# LogFile=
+I, [2016-11-19T19:26:01.374393 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.374411 #114869]  INFO -- default-centos-71:     +LogFile=/var/log/zabbix/zabbix_server.log
+I, [2016-11-19T19:26:01.374428 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.374446 #114869]  INFO -- default-centos-71:     +### Option: LogFileSize
+I, [2016-11-19T19:26:01.374464 #114869]  INFO -- default-centos-71:     +#	Maximum size of log file in MB.
+I, [2016-11-19T19:26:01.374481 #114869]  INFO -- default-centos-71:     +#	0 - disable automatic log rotation.
+I, [2016-11-19T19:26:01.374499 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.374749 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.374776 #114869]  INFO -- default-centos-71:     +# Range: 0-1024
+I, [2016-11-19T19:26:01.374795 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.374812 #114869]  INFO -- default-centos-71:     +# LogFileSize=1
+I, [2016-11-19T19:26:01.374830 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.374848 #114869]  INFO -- default-centos-71:     +### Option: DebugLevel
+I, [2016-11-19T19:26:01.374866 #114869]  INFO -- default-centos-71:     +#	Specifies debug level:
+I, [2016-11-19T19:26:01.374885 #114869]  INFO -- default-centos-71:     +#	0 - basic information about starting and stopping of Zabbix processes
+I, [2016-11-19T19:26:01.374903 #114869]  INFO -- default-centos-71:     +#	1 - critical information
+I, [2016-11-19T19:26:01.374922 #114869]  INFO -- default-centos-71:     +#	2 - error information
+I, [2016-11-19T19:26:01.374940 #114869]  INFO -- default-centos-71:     +#	3 - warnings
+I, [2016-11-19T19:26:01.374959 #114869]  INFO -- default-centos-71:     +#	4 - for debugging (produces lots of information)
+I, [2016-11-19T19:26:01.374977 #114869]  INFO -- default-centos-71:     +#	5 - extended debugging (produces even more information)
+I, [2016-11-19T19:26:01.374995 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.375013 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.375112 #114869]  INFO -- default-centos-71:     +# Range: 0-5
+I, [2016-11-19T19:26:01.375142 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.375161 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.375179 #114869]  INFO -- default-centos-71:     +DebugLevel=4
+I, [2016-11-19T19:26:01.375197 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.375215 #114869]  INFO -- default-centos-71:     +### Option: PidFile
+I, [2016-11-19T19:26:01.380955 #114869]  INFO -- default-centos-71:     +#	Name of PID file.
+I, [2016-11-19T19:26:01.381001 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.381024 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.381060 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.381082 #114869]  INFO -- default-centos-71:     +# PidFile=/tmp/zabbix_server.pid
+I, [2016-11-19T19:26:01.381102 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.381122 #114869]  INFO -- default-centos-71:     +PidFile=/run/zabbix/zabbix_server.pid
+I, [2016-11-19T19:26:01.381141 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.381161 #114869]  INFO -- default-centos-71:     +### Option: DBHost
+I, [2016-11-19T19:26:01.381181 #114869]  INFO -- default-centos-71:     +#	Database host name.
+I, [2016-11-19T19:26:01.381200 #114869]  INFO -- default-centos-71:     +#	If set to localhost, socket is used for MySQL.
+I, [2016-11-19T19:26:01.381221 #114869]  INFO -- default-centos-71:     +#	If set to empty string, socket is used for PostgreSQL.
+I, [2016-11-19T19:26:01.381241 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.381261 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.381288 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.381309 #114869]  INFO -- default-centos-71:     +# DBHost=localhost
+I, [2016-11-19T19:26:01.381328 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.381347 #114869]  INFO -- default-centos-71:     +### Option: DBName
+I, [2016-11-19T19:26:01.381367 #114869]  INFO -- default-centos-71:     +#	Database name.
+I, [2016-11-19T19:26:01.381387 #114869]  INFO -- default-centos-71:     +#	For SQLite3 path to database file must be provided. DBUser and DBPassword are ignored.
+I, [2016-11-19T19:26:01.381407 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.381426 #114869]  INFO -- default-centos-71:     +# Mandatory: yes
+I, [2016-11-19T19:26:01.381446 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.381465 #114869]  INFO -- default-centos-71:     +# DBName=
+I, [2016-11-19T19:26:01.381484 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.381503 #114869]  INFO -- default-centos-71:     +DBName=zabbix
+I, [2016-11-19T19:26:01.381523 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.381544 #114869]  INFO -- default-centos-71:     +### Option: DBSchema
+I, [2016-11-19T19:26:01.381566 #114869]  INFO -- default-centos-71:     +#	Schema name. Used for IBM DB2 and PostgreSQL.
+I, [2016-11-19T19:26:01.381591 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.381611 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.381630 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.381649 #114869]  INFO -- default-centos-71:     +# DBSchema=
+I, [2016-11-19T19:26:01.381668 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.381687 #114869]  INFO -- default-centos-71:     +### Option: DBUser
+I, [2016-11-19T19:26:01.381786 #114869]  INFO -- default-centos-71:     +#	Database user. Ignored for SQLite.
+I, [2016-11-19T19:26:01.381807 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.381826 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.381845 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.381864 #114869]  INFO -- default-centos-71:     +# DBUser=
+I, [2016-11-19T19:26:01.381883 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.381902 #114869]  INFO -- default-centos-71:     +DBUser=admin
+I, [2016-11-19T19:26:01.381921 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.381940 #114869]  INFO -- default-centos-71:     +### Option: DBPassword
+I, [2016-11-19T19:26:01.381959 #114869]  INFO -- default-centos-71:     +#	Database password. Ignored for SQLite.
+I, [2016-11-19T19:26:01.381979 #114869]  INFO -- default-centos-71:     +#	Comment this line if no password is used.
+I, [2016-11-19T19:26:01.381998 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.382017 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.382048 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.382072 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.382091 #114869]  INFO -- default-centos-71:     +DBPassword=342112f
+I, [2016-11-19T19:26:01.382111 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.382130 #114869]  INFO -- default-centos-71:     +### Option: DBSocket
+I, [2016-11-19T19:26:01.382150 #114869]  INFO -- default-centos-71:     +#	Path to MySQL socket.
+I, [2016-11-19T19:26:01.382169 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.382188 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.382208 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.382227 #114869]  INFO -- default-centos-71:     +# DBSocket=/tmp/mysql.sock
+I, [2016-11-19T19:26:01.382246 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.382265 #114869]  INFO -- default-centos-71:     +### Option: DBPort
+I, [2016-11-19T19:26:01.382290 #114869]  INFO -- default-centos-71:     +#	Database port when not using local socket. Ignored for SQLite.
+I, [2016-11-19T19:26:01.382311 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.382331 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.382351 #114869]  INFO -- default-centos-71:     +# Range: 1024-65535
+I, [2016-11-19T19:26:01.382370 #114869]  INFO -- default-centos-71:     +# Default (for MySQL):
+I, [2016-11-19T19:26:01.382389 #114869]  INFO -- default-centos-71:     +# DBPort=3306
+I, [2016-11-19T19:26:01.382408 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.382499 #114869]  INFO -- default-centos-71:     +############ ADVANCED PARAMETERS ################
+I, [2016-11-19T19:26:01.382521 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.382540 #114869]  INFO -- default-centos-71:     +### Option: StartPollers
+I, [2016-11-19T19:26:01.382560 #114869]  INFO -- default-centos-71:     +#	Number of pre-forked instances of pollers.
+I, [2016-11-19T19:26:01.382579 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.382598 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.382617 #114869]  INFO -- default-centos-71:     +# Range: 0-1000
+I, [2016-11-19T19:26:01.382636 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.382655 #114869]  INFO -- default-centos-71:     +# StartPollers=5
+I, [2016-11-19T19:26:01.382674 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.382693 #114869]  INFO -- default-centos-71:     +### Option: StartIPMIPollers
+I, [2016-11-19T19:26:01.382713 #114869]  INFO -- default-centos-71:     +#	Number of pre-forked instances of IPMI pollers.
+I, [2016-11-19T19:26:01.382732 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.382752 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.382773 #114869]  INFO -- default-centos-71:     +# Range: 0-1000
+I, [2016-11-19T19:26:01.382793 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.382812 #114869]  INFO -- default-centos-71:     +# StartIPMIPollers=0
+I, [2016-11-19T19:26:01.382833 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.382852 #114869]  INFO -- default-centos-71:     +### Option: StartPollersUnreachable
+I, [2016-11-19T19:26:01.382872 #114869]  INFO -- default-centos-71:     +#	Number of pre-forked instances of pollers for unreachable hosts (including IPMI and Java).
+I, [2016-11-19T19:26:01.382892 #114869]  INFO -- default-centos-71:     +#	At least one poller for unreachable hosts must be running if regular, IPMI or Java pollers
+I, [2016-11-19T19:26:01.382911 #114869]  INFO -- default-centos-71:     +#	are started.
+I, [2016-11-19T19:26:01.382931 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.382950 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.382969 #114869]  INFO -- default-centos-71:     +# Range: 0-1000
+I, [2016-11-19T19:26:01.382988 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.383007 #114869]  INFO -- default-centos-71:     +# StartPollersUnreachable=1
+I, [2016-11-19T19:26:01.383025 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.383062 #114869]  INFO -- default-centos-71:     +### Option: StartTrappers
+I, [2016-11-19T19:26:01.383083 #114869]  INFO -- default-centos-71:     +#	Number of pre-forked instances of trappers.
+I, [2016-11-19T19:26:01.383104 #114869]  INFO -- default-centos-71:     +#	Trappers accept incoming connections from Zabbix sender, active agents and active proxies.
+I, [2016-11-19T19:26:01.383202 #114869]  INFO -- default-centos-71:     +#	At least one trapper process must be running to display server availability and view queue
+I, [2016-11-19T19:26:01.383223 #114869]  INFO -- default-centos-71:     +#	in the frontend.
+I, [2016-11-19T19:26:01.383242 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.383265 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.383285 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.383304 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.383323 #114869]  INFO -- default-centos-71:     +# Range: 0-1000
+I, [2016-11-19T19:26:01.383341 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.383360 #114869]  INFO -- default-centos-71:     +# StartTrappers=5
+I, [2016-11-19T19:26:01.383378 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.383397 #114869]  INFO -- default-centos-71:     +### Option: StartPingers
+I, [2016-11-19T19:26:01.383416 #114869]  INFO -- default-centos-71:     +#	Number of pre-forked instances of ICMP pingers.
+I, [2016-11-19T19:26:01.383435 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.383454 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.383472 #114869]  INFO -- default-centos-71:     +# Range: 0-1000
+I, [2016-11-19T19:26:01.383491 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.383509 #114869]  INFO -- default-centos-71:     +# StartPingers=1
+I, [2016-11-19T19:26:01.383528 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.383546 #114869]  INFO -- default-centos-71:     +### Option: StartDiscoverers
+I, [2016-11-19T19:26:01.383565 #114869]  INFO -- default-centos-71:     +#	Number of pre-forked instances of discoverers.
+I, [2016-11-19T19:26:01.383583 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.383602 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.383620 #114869]  INFO -- default-centos-71:     +# Range: 0-250
+I, [2016-11-19T19:26:01.383639 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.383657 #114869]  INFO -- default-centos-71:     +# StartDiscoverers=1
+I, [2016-11-19T19:26:01.383675 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.383693 #114869]  INFO -- default-centos-71:     +### Option: StartHTTPPollers
+I, [2016-11-19T19:26:01.383711 #114869]  INFO -- default-centos-71:     +#	Number of pre-forked instances of HTTP pollers.
+I, [2016-11-19T19:26:01.383729 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.383747 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.383849 #114869]  INFO -- default-centos-71:     +# Range: 0-1000
+I, [2016-11-19T19:26:01.383869 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.383887 #114869]  INFO -- default-centos-71:     +# StartHTTPPollers=1
+I, [2016-11-19T19:26:01.383906 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.383924 #114869]  INFO -- default-centos-71:     +### Option: StartTimers
+I, [2016-11-19T19:26:01.383942 #114869]  INFO -- default-centos-71:     +#	Number of pre-forked instances of timers.
+I, [2016-11-19T19:26:01.383961 #114869]  INFO -- default-centos-71:     +#	Timers process time-based trigger functions and maintenance periods.
+I, [2016-11-19T19:26:01.383980 #114869]  INFO -- default-centos-71:     +#	Only the first timer process handles the maintenance periods.
+I, [2016-11-19T19:26:01.383999 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.384017 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.384046 #114869]  INFO -- default-centos-71:     +# Range: 1-1000
+I, [2016-11-19T19:26:01.384069 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.384088 #114869]  INFO -- default-centos-71:     +# StartTimers=1
+I, [2016-11-19T19:26:01.384106 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.384125 #114869]  INFO -- default-centos-71:     +### Option: StartEscalators
+I, [2016-11-19T19:26:01.384144 #114869]  INFO -- default-centos-71:     +#	Number of pre-forked instances of escalators.
+I, [2016-11-19T19:26:01.384162 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.384180 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.384203 #114869]  INFO -- default-centos-71:     +# Range: 0-100
+I, [2016-11-19T19:26:01.384222 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.384240 #114869]  INFO -- default-centos-71:     +# StartEscalators=1
+I, [2016-11-19T19:26:01.384258 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.384277 #114869]  INFO -- default-centos-71:     +### Option: JavaGateway
+I, [2016-11-19T19:26:01.384295 #114869]  INFO -- default-centos-71:     +#	IP address (or hostname) of Zabbix Java gateway.
+I, [2016-11-19T19:26:01.384313 #114869]  INFO -- default-centos-71:     +#	Only required if Java pollers are started.
+I, [2016-11-19T19:26:01.384332 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.384350 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.384368 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.384386 #114869]  INFO -- default-centos-71:     +# JavaGateway=
+I, [2016-11-19T19:26:01.384551 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.384574 #114869]  INFO -- default-centos-71:     +JavaGateway=0.0.0.0
+I, [2016-11-19T19:26:01.392456 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.392514 #114869]  INFO -- default-centos-71:     +### Option: JavaGatewayPort
+I, [2016-11-19T19:26:01.392538 #114869]  INFO -- default-centos-71:     +#	Port that Zabbix Java gateway listens on.
+I, [2016-11-19T19:26:01.392559 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.392579 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.392599 #114869]  INFO -- default-centos-71:     +# Range: 1024-32767
+I, [2016-11-19T19:26:01.392619 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.392639 #114869]  INFO -- default-centos-71:     +# JavaGatewayPort=10052
+I, [2016-11-19T19:26:01.392658 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.392678 #114869]  INFO -- default-centos-71:     +JavaGatewayPort=10052
+I, [2016-11-19T19:26:01.392697 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.392716 #114869]  INFO -- default-centos-71:     +### Option: StartJavaPollers
+I, [2016-11-19T19:26:01.392735 #114869]  INFO -- default-centos-71:     +#	Number of pre-forked instances of Java pollers.
+I, [2016-11-19T19:26:01.392756 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.392776 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.392795 #114869]  INFO -- default-centos-71:     +# Range: 0-1000
+I, [2016-11-19T19:26:01.392814 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.392833 #114869]  INFO -- default-centos-71:     +# StartJavaPollers=0
+I, [2016-11-19T19:26:01.392852 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.392872 #114869]  INFO -- default-centos-71:     +StartJavaPollers=5
+I, [2016-11-19T19:26:01.392891 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.392912 #114869]  INFO -- default-centos-71:     +### Option: StartVMwareCollectors
+I, [2016-11-19T19:26:01.393150 #114869]  INFO -- default-centos-71:     +#	Number of pre-forked vmware collector instances.
+I, [2016-11-19T19:26:01.393174 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.393193 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.393212 #114869]  INFO -- default-centos-71:     +# Range: 0-250
+I, [2016-11-19T19:26:01.393231 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.393250 #114869]  INFO -- default-centos-71:     +# StartVMwareCollectors=0
+I, [2016-11-19T19:26:01.393270 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.393289 #114869]  INFO -- default-centos-71:     +### Option: VMwareFrequency
+I, [2016-11-19T19:26:01.393309 #114869]  INFO -- default-centos-71:     +#	How often Zabbix will connect to VMware service to obtain a new data.
+I, [2016-11-19T19:26:01.393338 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.393358 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.393377 #114869]  INFO -- default-centos-71:     +# Range: 10-86400
+I, [2016-11-19T19:26:01.393396 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.393416 #114869]  INFO -- default-centos-71:     +# VMwareFrequency=60
+I, [2016-11-19T19:26:01.393435 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.393453 #114869]  INFO -- default-centos-71:     +### Option: VMwarePerfFrequency
+I, [2016-11-19T19:26:01.393473 #114869]  INFO -- default-centos-71:     +#	How often Zabbix will connect to VMware service to obtain performance data.
+I, [2016-11-19T19:26:01.393496 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.393515 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.393534 #114869]  INFO -- default-centos-71:     +# Range: 10-86400
+I, [2016-11-19T19:26:01.393553 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.393572 #114869]  INFO -- default-centos-71:     +# VMwarePerfFrequency=60
+I, [2016-11-19T19:26:01.393591 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.393610 #114869]  INFO -- default-centos-71:     +### Option: VMwareCacheSize
+I, [2016-11-19T19:26:01.393628 #114869]  INFO -- default-centos-71:     +#	Size of VMware cache, in bytes.
+I, [2016-11-19T19:26:01.393647 #114869]  INFO -- default-centos-71:     +#	Shared memory size for storing VMware data.
+I, [2016-11-19T19:26:01.393667 #114869]  INFO -- default-centos-71:     +#	Only used if VMware collectors are started.
+I, [2016-11-19T19:26:01.393686 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.393705 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.393723 #114869]  INFO -- default-centos-71:     +# Range: 256K-2G
+I, [2016-11-19T19:26:01.393745 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.393764 #114869]  INFO -- default-centos-71:     +# VMwareCacheSize=8M
+I, [2016-11-19T19:26:01.393783 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.393802 #114869]  INFO -- default-centos-71:     +### Option: VMwareTimeout
+I, [2016-11-19T19:26:01.393821 #114869]  INFO -- default-centos-71:     +#	Specifies how many seconds vmware collector waits for response from VMware service.
+I, [2016-11-19T19:26:01.393840 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.393859 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.393996 #114869]  INFO -- default-centos-71:     +# Range: 1-300
+I, [2016-11-19T19:26:01.394018 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.394052 #114869]  INFO -- default-centos-71:     +# VMwareTimeout=10
+I, [2016-11-19T19:26:01.394073 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.394092 #114869]  INFO -- default-centos-71:     +### Option: SNMPTrapperFile
+I, [2016-11-19T19:26:01.394111 #114869]  INFO -- default-centos-71:     +#	Temporary file used for passing data from SNMP trap daemon to the server.
+I, [2016-11-19T19:26:01.394130 #114869]  INFO -- default-centos-71:     +#	Must be the same as in zabbix_trap_receiver.pl or SNMPTT configuration file.
+I, [2016-11-19T19:26:01.394149 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.394168 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.394186 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.394206 #114869]  INFO -- default-centos-71:     +# SNMPTrapperFile=/tmp/zabbix_traps.tmp
+I, [2016-11-19T19:26:01.394224 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.394243 #114869]  INFO -- default-centos-71:     +SNMPTrapperFile=/var/log/snmptrap/snmptrap.log
+I, [2016-11-19T19:26:01.394262 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.394281 #114869]  INFO -- default-centos-71:     +### Option: StartSNMPTrapper
+I, [2016-11-19T19:26:01.394305 #114869]  INFO -- default-centos-71:     +#	If 1, SNMP trapper process is started.
+I, [2016-11-19T19:26:01.394325 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.394344 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.394362 #114869]  INFO -- default-centos-71:     +# Range: 0-1
+I, [2016-11-19T19:26:01.394381 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.394400 #114869]  INFO -- default-centos-71:     +# StartSNMPTrapper=0
+I, [2016-11-19T19:26:01.394419 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.394437 #114869]  INFO -- default-centos-71:     +### Option: ListenIP
+I, [2016-11-19T19:26:01.394456 #114869]  INFO -- default-centos-71:     +#	List of comma delimited IP addresses that the trapper should listen on.
+I, [2016-11-19T19:26:01.394478 #114869]  INFO -- default-centos-71:     +#	Trapper will listen on all network interfaces if this parameter is missing.
+I, [2016-11-19T19:26:01.394497 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.394518 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.394537 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.394558 #114869]  INFO -- default-centos-71:     +# ListenIP=0.0.0.0
+I, [2016-11-19T19:26:01.394577 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.394723 #114869]  INFO -- default-centos-71:     +### Option: HousekeepingFrequency
+I, [2016-11-19T19:26:01.394745 #114869]  INFO -- default-centos-71:     +#	How often Zabbix will perform housekeeping procedure (in hours).
+I, [2016-11-19T19:26:01.394765 #114869]  INFO -- default-centos-71:     +#	Housekeeping is removing outdated information from the database.
+I, [2016-11-19T19:26:01.394783 #114869]  INFO -- default-centos-71:     +#	To prevent Housekeeper from being overloaded, no more than 4 times HousekeepingFrequency
+I, [2016-11-19T19:26:01.394802 #114869]  INFO -- default-centos-71:     +#	hours of outdated information are deleted in one housekeeping cycle, for each item.
+I, [2016-11-19T19:26:01.394821 #114869]  INFO -- default-centos-71:     +#	To lower load on server startup housekeeping is postponed for 30 minutes after server start.
+I, [2016-11-19T19:26:01.394840 #114869]  INFO -- default-centos-71:     +#	With HousekeepingFrequency=0 the housekeeper can be only executed using the runtime control option.
+I, [2016-11-19T19:26:01.394859 #114869]  INFO -- default-centos-71:     +#	In this case the period of outdated information deleted in one housekeeping cycle is 4 times the
+I, [2016-11-19T19:26:01.394878 #114869]  INFO -- default-centos-71:     +#	period since the last housekeeping cycle, but not less than 4 hours and not greater than 4 days.
+I, [2016-11-19T19:26:01.394896 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.394915 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.394933 #114869]  INFO -- default-centos-71:     +# Range: 0-24
+I, [2016-11-19T19:26:01.394951 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.394971 #114869]  INFO -- default-centos-71:     +# HousekeepingFrequency=1
+I, [2016-11-19T19:26:01.394990 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.395007 #114869]  INFO -- default-centos-71:     +### Option: MaxHousekeeperDelete
+I, [2016-11-19T19:26:01.395025 #114869]  INFO -- default-centos-71:     +#	The table "housekeeper" contains "tasks" for housekeeping procedure in the format:
+I, [2016-11-19T19:26:01.395064 #114869]  INFO -- default-centos-71:     +#	[housekeeperid], [tablename], [field], [value].
+I, [2016-11-19T19:26:01.395084 #114869]  INFO -- default-centos-71:     +#	No more than 'MaxHousekeeperDelete' rows (corresponding to [tablename], [field], [value])
+I, [2016-11-19T19:26:01.395103 #114869]  INFO -- default-centos-71:     +#	will be deleted per one task in one housekeeping cycle.
+I, [2016-11-19T19:26:01.395122 #114869]  INFO -- default-centos-71:     +#	SQLite3 does not use this parameter, deletes all corresponding rows without a limit.
+I, [2016-11-19T19:26:01.395145 #114869]  INFO -- default-centos-71:     +#	If set to 0 then no limit is used at all. In this case you must know what you are doing!
+I, [2016-11-19T19:26:01.395164 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.395182 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.395199 #114869]  INFO -- default-centos-71:     +# Range: 0-1000000
+I, [2016-11-19T19:26:01.395217 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.395235 #114869]  INFO -- default-centos-71:     +# MaxHousekeeperDelete=5000
+I, [2016-11-19T19:26:01.395252 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.395270 #114869]  INFO -- default-centos-71:     +### Option: SenderFrequency
+I, [2016-11-19T19:26:01.395288 #114869]  INFO -- default-centos-71:     +#	How often Zabbix will try to send unsent alerts (in seconds).
+I, [2016-11-19T19:26:01.395306 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.402372 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.402451 #114869]  INFO -- default-centos-71:     +# Range: 5-3600
+I, [2016-11-19T19:26:01.402475 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.402496 #114869]  INFO -- default-centos-71:     +# SenderFrequency=30
+I, [2016-11-19T19:26:01.402516 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.402539 #114869]  INFO -- default-centos-71:     +### Option: CacheSize
+I, [2016-11-19T19:26:01.402562 #114869]  INFO -- default-centos-71:     +#	Size of configuration cache, in bytes.
+I, [2016-11-19T19:26:01.402584 #114869]  INFO -- default-centos-71:     +#	Shared memory size for storing host, item and trigger data.
+I, [2016-11-19T19:26:01.402604 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.402623 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.402643 #114869]  INFO -- default-centos-71:     +# Range: 128K-8G
+I, [2016-11-19T19:26:01.402663 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.402682 #114869]  INFO -- default-centos-71:     +# CacheSize=8M
+I, [2016-11-19T19:26:01.402701 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.402720 #114869]  INFO -- default-centos-71:     +### Option: CacheUpdateFrequency
+I, [2016-11-19T19:26:01.402740 #114869]  INFO -- default-centos-71:     +#	How often Zabbix will perform update of configuration cache, in seconds.
+I, [2016-11-19T19:26:01.402766 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.402788 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.402808 #114869]  INFO -- default-centos-71:     +# Range: 1-3600
+I, [2016-11-19T19:26:01.402827 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.402847 #114869]  INFO -- default-centos-71:     +# CacheUpdateFrequency=60
+I, [2016-11-19T19:26:01.402866 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.402885 #114869]  INFO -- default-centos-71:     +### Option: StartDBSyncers
+I, [2016-11-19T19:26:01.402904 #114869]  INFO -- default-centos-71:     +#	Number of pre-forked instances of DB Syncers.
+I, [2016-11-19T19:26:01.402923 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.403214 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.403239 #114869]  INFO -- default-centos-71:     +# Range: 1-100
+I, [2016-11-19T19:26:01.403262 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.403282 #114869]  INFO -- default-centos-71:     +# StartDBSyncers=4
+I, [2016-11-19T19:26:01.403301 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.403320 #114869]  INFO -- default-centos-71:     +### Option: HistoryCacheSize
+I, [2016-11-19T19:26:01.403340 #114869]  INFO -- default-centos-71:     +#	Size of history cache, in bytes.
+I, [2016-11-19T19:26:01.403359 #114869]  INFO -- default-centos-71:     +#	Shared memory size for storing history data.
+I, [2016-11-19T19:26:01.403390 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.403412 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.403431 #114869]  INFO -- default-centos-71:     +# Range: 128K-2G
+I, [2016-11-19T19:26:01.403450 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.403469 #114869]  INFO -- default-centos-71:     +# HistoryCacheSize=16M
+I, [2016-11-19T19:26:01.403490 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.403510 #114869]  INFO -- default-centos-71:     +### Option: HistoryIndexCacheSize
+I, [2016-11-19T19:26:01.403529 #114869]  INFO -- default-centos-71:     +#	Size of history index cache, in bytes.
+I, [2016-11-19T19:26:01.403549 #114869]  INFO -- default-centos-71:     +#	Shared memory size for indexing history cache.
+I, [2016-11-19T19:26:01.403568 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.403587 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.403606 #114869]  INFO -- default-centos-71:     +# Range: 128K-2G
+I, [2016-11-19T19:26:01.403625 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.403645 #114869]  INFO -- default-centos-71:     +# HistoryIndexCacheSize=4M
+I, [2016-11-19T19:26:01.403664 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.403683 #114869]  INFO -- default-centos-71:     +### Option: TrendCacheSize
+I, [2016-11-19T19:26:01.403703 #114869]  INFO -- default-centos-71:     +#	Size of trend cache, in bytes.
+I, [2016-11-19T19:26:01.403722 #114869]  INFO -- default-centos-71:     +#	Shared memory size for storing trends data.
+I, [2016-11-19T19:26:01.403741 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.403762 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.403784 #114869]  INFO -- default-centos-71:     +# Range: 128K-2G
+I, [2016-11-19T19:26:01.403805 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.403825 #114869]  INFO -- default-centos-71:     +# TrendCacheSize=4M
+I, [2016-11-19T19:26:01.403844 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.403863 #114869]  INFO -- default-centos-71:     +### Option: ValueCacheSize
+I, [2016-11-19T19:26:01.403882 #114869]  INFO -- default-centos-71:     +#	Size of history value cache, in bytes.
+I, [2016-11-19T19:26:01.403902 #114869]  INFO -- default-centos-71:     +#	Shared memory size for caching item history data requests.
+I, [2016-11-19T19:26:01.404245 #114869]  INFO -- default-centos-71:     +#	Setting to 0 disables value cache.
+I, [2016-11-19T19:26:01.404271 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.404291 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.404313 #114869]  INFO -- default-centos-71:     +# Range: 0,128K-64G
+I, [2016-11-19T19:26:01.404335 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.404357 #114869]  INFO -- default-centos-71:     +# ValueCacheSize=8M
+I, [2016-11-19T19:26:01.404376 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.404396 #114869]  INFO -- default-centos-71:     +### Option: Timeout
+I, [2016-11-19T19:26:01.404415 #114869]  INFO -- default-centos-71:     +#	Specifies how long we wait for agent, SNMP device or external check (in seconds).
+I, [2016-11-19T19:26:01.404434 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.404453 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.404472 #114869]  INFO -- default-centos-71:     +# Range: 1-30
+I, [2016-11-19T19:26:01.404491 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.404510 #114869]  INFO -- default-centos-71:     +# Timeout=3
+I, [2016-11-19T19:26:01.404529 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.404548 #114869]  INFO -- default-centos-71:     +### Option: TrapperTimeout
+I, [2016-11-19T19:26:01.404567 #114869]  INFO -- default-centos-71:     +#	Specifies how many seconds trapper may spend processing new data.
+I, [2016-11-19T19:26:01.404593 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.404613 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.404632 #114869]  INFO -- default-centos-71:     +# Range: 1-300
+I, [2016-11-19T19:26:01.404651 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.404672 #114869]  INFO -- default-centos-71:     +# TrapperTimeout=300
+I, [2016-11-19T19:26:01.404691 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.404711 #114869]  INFO -- default-centos-71:     +### Option: UnreachablePeriod
+I, [2016-11-19T19:26:01.404730 #114869]  INFO -- default-centos-71:     +#	After how many seconds of unreachability treat a host as unavailable.
+I, [2016-11-19T19:26:01.404749 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.404768 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.404787 #114869]  INFO -- default-centos-71:     +# Range: 1-3600
+I, [2016-11-19T19:26:01.404806 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.404826 #114869]  INFO -- default-centos-71:     +# UnreachablePeriod=45
+I, [2016-11-19T19:26:01.405046 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.405077 #114869]  INFO -- default-centos-71:     +### Option: UnavailableDelay
+I, [2016-11-19T19:26:01.405098 #114869]  INFO -- default-centos-71:     +#	How often host is checked for availability during the unavailability period, in seconds.
+I, [2016-11-19T19:26:01.405117 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.405136 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.405154 #114869]  INFO -- default-centos-71:     +# Range: 1-3600
+I, [2016-11-19T19:26:01.405172 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.405191 #114869]  INFO -- default-centos-71:     +# UnavailableDelay=60
+I, [2016-11-19T19:26:01.405210 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.405229 #114869]  INFO -- default-centos-71:     +### Option: UnreachableDelay
+I, [2016-11-19T19:26:01.405247 #114869]  INFO -- default-centos-71:     +#	How often host is checked for availability during the unreachability period, in seconds.
+I, [2016-11-19T19:26:01.405270 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.405289 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.405307 #114869]  INFO -- default-centos-71:     +# Range: 1-3600
+I, [2016-11-19T19:26:01.405326 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.405345 #114869]  INFO -- default-centos-71:     +# UnreachableDelay=15
+I, [2016-11-19T19:26:01.405364 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.405383 #114869]  INFO -- default-centos-71:     +### Option: AlertScriptsPath
+I, [2016-11-19T19:26:01.405402 #114869]  INFO -- default-centos-71:     +#	Full path to location of custom alert scripts.
+I, [2016-11-19T19:26:01.405421 #114869]  INFO -- default-centos-71:     +#	Default depends on compilation options.
+I, [2016-11-19T19:26:01.405439 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.405458 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.405476 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.405495 #114869]  INFO -- default-centos-71:     +AlertScriptsPath=/usr/lib/zabbix/alertscripts
+I, [2016-11-19T19:26:01.405514 #114869]  INFO -- default-centos-71:     +#AlertScriptsPath=/bin
+I, [2016-11-19T19:26:01.405532 #114869]  INFO -- default-centos-71:     +### Option: ExternalScripts
+I, [2016-11-19T19:26:01.405551 #114869]  INFO -- default-centos-71:     +#	Full path to location of external scripts.
+I, [2016-11-19T19:26:01.405569 #114869]  INFO -- default-centos-71:     +#	Default depends on compilation options.
+I, [2016-11-19T19:26:01.405587 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.405613 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.405632 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.405651 #114869]  INFO -- default-centos-71:     +ExternalScripts=/ust/lib/zabbix/externalscripts
+I, [2016-11-19T19:26:01.405670 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.405688 #114869]  INFO -- default-centos-71:     +### Option: FpingLocation
+I, [2016-11-19T19:26:01.405707 #114869]  INFO -- default-centos-71:     +#	Location of fping.
+I, [2016-11-19T19:26:01.405725 #114869]  INFO -- default-centos-71:     +#	Make sure that fping binary has root ownership and SUID flag set.
+I, [2016-11-19T19:26:01.405744 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.405763 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.405781 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.405799 #114869]  INFO -- default-centos-71:     +# FpingLocation=/usr/sbin/fping
+I, [2016-11-19T19:26:01.405817 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.405838 #114869]  INFO -- default-centos-71:     +#FprintLocation=/usr/sbin/fping
+I, [2016-11-19T19:26:01.405856 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.405874 #114869]  INFO -- default-centos-71:     +### Option: Fping6Location
+I, [2016-11-19T19:26:01.405893 #114869]  INFO -- default-centos-71:     +#	Location of fping6.
+I, [2016-11-19T19:26:01.405911 #114869]  INFO -- default-centos-71:     +#	Make sure that fping6 binary has root ownership and SUID flag set.
+I, [2016-11-19T19:26:01.405931 #114869]  INFO -- default-centos-71:     +#	Make empty if your fping utility is capable to process IPv6 addresses.
+I, [2016-11-19T19:26:01.405949 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.405967 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.405985 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.406003 #114869]  INFO -- default-centos-71:     +# Fping6Location=/usr/sbin/fping6
+I, [2016-11-19T19:26:01.406205 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.406234 #114869]  INFO -- default-centos-71:     +### Option: SSHKeyLocation
+I, [2016-11-19T19:26:01.406254 #114869]  INFO -- default-centos-71:     +#	Location of public and private keys for SSH checks and actions.
+I, [2016-11-19T19:26:01.406272 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.406290 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.410079 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.410134 #114869]  INFO -- default-centos-71:     +# SSHKeyLocation=
+I, [2016-11-19T19:26:01.410159 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.410183 #114869]  INFO -- default-centos-71:     +### Option: LogSlowQueries
+I, [2016-11-19T19:26:01.410206 #114869]  INFO -- default-centos-71:     +#	How long a database query may take before being logged (in milliseconds).
+I, [2016-11-19T19:26:01.410229 #114869]  INFO -- default-centos-71:     +#	Only works if DebugLevel set to 3, 4 or 5.
+I, [2016-11-19T19:26:01.410251 #114869]  INFO -- default-centos-71:     +#	0 - don't log slow queries.
+I, [2016-11-19T19:26:01.410274 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.410296 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.410319 #114869]  INFO -- default-centos-71:     +# Range: 1-3600000
+I, [2016-11-19T19:26:01.410344 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.410368 #114869]  INFO -- default-centos-71:     +# LogSlowQueries=0
+I, [2016-11-19T19:26:01.410390 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.410413 #114869]  INFO -- default-centos-71:     +### Option: TmpDir
+I, [2016-11-19T19:26:01.410439 #114869]  INFO -- default-centos-71:     +#	Temporary directory.
+I, [2016-11-19T19:26:01.410461 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.410492 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.410516 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.410538 #114869]  INFO -- default-centos-71:     +# TmpDir=/tmp
+I, [2016-11-19T19:26:01.410561 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.410583 #114869]  INFO -- default-centos-71:     +### Option: StartProxyPollers
+I, [2016-11-19T19:26:01.410606 #114869]  INFO -- default-centos-71:     +#	Number of pre-forked instances of pollers for passive proxies.
+I, [2016-11-19T19:26:01.410629 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.410651 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.410673 #114869]  INFO -- default-centos-71:     +# Range: 0-250
+I, [2016-11-19T19:26:01.410696 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.410719 #114869]  INFO -- default-centos-71:     +# StartProxyPollers=1
+I, [2016-11-19T19:26:01.410742 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.410765 #114869]  INFO -- default-centos-71:     +### Option: ProxyConfigFrequency
+I, [2016-11-19T19:26:01.410788 #114869]  INFO -- default-centos-71:     +#	How often Zabbix Server sends configuration data to a Zabbix Proxy in seconds.
+I, [2016-11-19T19:26:01.410811 #114869]  INFO -- default-centos-71:     +#	This parameter is used only for proxies in the passive mode.
+I, [2016-11-19T19:26:01.410833 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.410855 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.410876 #114869]  INFO -- default-centos-71:     +# Range: 1-3600*24*7
+I, [2016-11-19T19:26:01.410900 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.411102 #114869]  INFO -- default-centos-71:     +# ProxyConfigFrequency=3600
+I, [2016-11-19T19:26:01.411128 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.411151 #114869]  INFO -- default-centos-71:     +### Option: ProxyDataFrequency
+I, [2016-11-19T19:26:01.411174 #114869]  INFO -- default-centos-71:     +#	How often Zabbix Server requests history data from a Zabbix Proxy in seconds.
+I, [2016-11-19T19:26:01.411197 #114869]  INFO -- default-centos-71:     +#	This parameter is used only for proxies in the passive mode.
+I, [2016-11-19T19:26:01.411219 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.411239 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.411262 #114869]  INFO -- default-centos-71:     +# Range: 1-3600
+I, [2016-11-19T19:26:01.411284 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.411307 #114869]  INFO -- default-centos-71:     +# ProxyDataFrequency=1
+I, [2016-11-19T19:26:01.411326 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.411348 #114869]  INFO -- default-centos-71:     +### Option: AllowRoot
+I, [2016-11-19T19:26:01.411373 #114869]  INFO -- default-centos-71:     +#	Allow the server to run as 'root'. If disabled and the server is started by 'root', the server
+I, [2016-11-19T19:26:01.411397 #114869]  INFO -- default-centos-71:     +#	will try to switch to the user specified by the User configuration option instead.
+I, [2016-11-19T19:26:01.411419 #114869]  INFO -- default-centos-71:     +#	Has no effect if started under a regular user.
+I, [2016-11-19T19:26:01.411439 #114869]  INFO -- default-centos-71:     +#	0 - do not allow
+I, [2016-11-19T19:26:01.411461 #114869]  INFO -- default-centos-71:     +#	1 - allow
+I, [2016-11-19T19:26:01.411484 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.411506 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.411525 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.411547 #114869]  INFO -- default-centos-71:     +# AllowRoot=0
+I, [2016-11-19T19:26:01.411569 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.411588 #114869]  INFO -- default-centos-71:     +### Option: User
+I, [2016-11-19T19:26:01.411614 #114869]  INFO -- default-centos-71:     +#	Drop privileges to a specific, existing user on the system.
+I, [2016-11-19T19:26:01.411639 #114869]  INFO -- default-centos-71:     +#	Only has effect if run as 'root' and AllowRoot is disabled.
+I, [2016-11-19T19:26:01.411659 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.411680 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.411703 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.411722 #114869]  INFO -- default-centos-71:     +# User=zabbix
+I, [2016-11-19T19:26:01.411743 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.411766 #114869]  INFO -- default-centos-71:     +### Option: Include
+I, [2016-11-19T19:26:01.411785 #114869]  INFO -- default-centos-71:     +#	You may include individual files or all files in a directory in the configuration file.
+I, [2016-11-19T19:26:01.411807 #114869]  INFO -- default-centos-71:     +#	Installing Zabbix will create include directory in /usr/local/etc, unless modified during the compile time.
+I, [2016-11-19T19:26:01.411829 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.411849 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.411870 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.411890 #114869]  INFO -- default-centos-71:     +# Include=
+I, [2016-11-19T19:26:01.411911 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.411930 #114869]  INFO -- default-centos-71:     +# Include=/usr/local/etc/zabbix_server.general.conf
+I, [2016-11-19T19:26:01.411952 #114869]  INFO -- default-centos-71:     +# Include=/usr/local/etc/zabbix_server.conf.d/
+I, [2016-11-19T19:26:01.411975 #114869]  INFO -- default-centos-71:     +# Include=/usr/local/etc/zabbix_server.conf.d/*.conf
+I, [2016-11-19T19:26:01.411995 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.412016 #114869]  INFO -- default-centos-71:     +### Option: SSLCertLocation
+I, [2016-11-19T19:26:01.412047 #114869]  INFO -- default-centos-71:     +#	Location of SSL client certificates.
+I, [2016-11-19T19:26:01.412075 #114869]  INFO -- default-centos-71:     +#	This parameter is used only in web monitoring.
+I, [2016-11-19T19:26:01.412095 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.412117 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.412136 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.412159 #114869]  INFO -- default-centos-71:     +# SSLCertLocation=${datadir}/zabbix/ssl/certs
+I, [2016-11-19T19:26:01.412178 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.412197 #114869]  INFO -- default-centos-71:     +### Option: SSLKeyLocation
+I, [2016-11-19T19:26:01.412220 #114869]  INFO -- default-centos-71:     +#	Location of private keys for SSL client certificates.
+I, [2016-11-19T19:26:01.412240 #114869]  INFO -- default-centos-71:     +#	This parameter is used only in web monitoring.
+I, [2016-11-19T19:26:01.412262 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.412281 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.412303 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.412459 #114869]  INFO -- default-centos-71:     +# SSLKeyLocation=${datadir}/zabbix/ssl/keys
+I, [2016-11-19T19:26:01.412483 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.412502 #114869]  INFO -- default-centos-71:     +### Option: SSLCALocation
+I, [2016-11-19T19:26:01.412521 #114869]  INFO -- default-centos-71:     +#	Override the location of certificate authority (CA) files for SSL server certificate verification.
+I, [2016-11-19T19:26:01.412543 #114869]  INFO -- default-centos-71:     +#	If not set, system-wide directory will be used.
+I, [2016-11-19T19:26:01.412563 #114869]  INFO -- default-centos-71:     +#	This parameter is used only in web monitoring and SMTP authentication.
+I, [2016-11-19T19:26:01.412591 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.412611 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.412629 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.412647 #114869]  INFO -- default-centos-71:     +# SSLCALocation=
+I, [2016-11-19T19:26:01.412669 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.412688 #114869]  INFO -- default-centos-71:     +####### LOADABLE MODULES #######
+I, [2016-11-19T19:26:01.412706 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.412727 #114869]  INFO -- default-centos-71:     +### Option: LoadModulePath
+I, [2016-11-19T19:26:01.412746 #114869]  INFO -- default-centos-71:     +#	Full path to location of server modules.
+I, [2016-11-19T19:26:01.412765 #114869]  INFO -- default-centos-71:     +#	Default depends on compilation options.
+I, [2016-11-19T19:26:01.412785 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.412804 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.412822 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.412840 #114869]  INFO -- default-centos-71:     +# LoadModulePath=${libdir}/modules
+I, [2016-11-19T19:26:01.412861 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.412880 #114869]  INFO -- default-centos-71:     +### Option: LoadModule
+I, [2016-11-19T19:26:01.412898 #114869]  INFO -- default-centos-71:     +#	Module to load at server startup. Modules are used to extend functionality of the server.
+I, [2016-11-19T19:26:01.412916 #114869]  INFO -- default-centos-71:     +#	Format: LoadModule=<module.so>
+I, [2016-11-19T19:26:01.412938 #114869]  INFO -- default-centos-71:     +#	The modules must be located in directory specified by LoadModulePath.
+I, [2016-11-19T19:26:01.412957 #114869]  INFO -- default-centos-71:     +#	It is allowed to include multiple LoadModule parameters.
+I, [2016-11-19T19:26:01.412975 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.412993 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.413010 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.413028 #114869]  INFO -- default-centos-71:     +# LoadModule=
+I, [2016-11-19T19:26:01.413065 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.413086 #114869]  INFO -- default-centos-71:     +####### TLS-RELATED PARAMETERS #######
+I, [2016-11-19T19:26:01.413103 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.413121 #114869]  INFO -- default-centos-71:     +### Option: TLSCAFile
+I, [2016-11-19T19:26:01.413139 #114869]  INFO -- default-centos-71:     +#	Full pathname of a file containing the top-level CA(s) certificates for
+I, [2016-11-19T19:26:01.415546 #114869]  INFO -- default-centos-71:     +#	peer certificate verification.
+I, [2016-11-19T19:26:01.415590 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.415610 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.415634 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.415653 #114869]  INFO -- default-centos-71:     +# TLSCAFile=
+I, [2016-11-19T19:26:01.415671 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.415689 #114869]  INFO -- default-centos-71:     +### Option: TLSCRLFile
+I, [2016-11-19T19:26:01.415711 #114869]  INFO -- default-centos-71:     +#	Full pathname of a file containing revoked certificates.
+I, [2016-11-19T19:26:01.415730 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.415748 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.415766 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.415787 #114869]  INFO -- default-centos-71:     +# TLSCRLFile=
+I, [2016-11-19T19:26:01.415806 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.415824 #114869]  INFO -- default-centos-71:     +### Option: TLSCertFile
+I, [2016-11-19T19:26:01.415853 #114869]  INFO -- default-centos-71:     +#	Full pathname of a file containing the server certificate or certificate chain.
+I, [2016-11-19T19:26:01.415873 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.415895 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.415914 #114869]  INFO -- default-centos-71:     +# Default:
+I, [2016-11-19T19:26:01.415932 #114869]  INFO -- default-centos-71:     +# TLSCertFile=
+I, [2016-11-19T19:26:01.415949 #114869]  INFO -- default-centos-71:     +
+I, [2016-11-19T19:26:01.415967 #114869]  INFO -- default-centos-71:     +### Option: TLSKeyFile
+I, [2016-11-19T19:26:01.415985 #114869]  INFO -- default-centos-71:     +#	Full pathname of a file containing the server private key.
+I, [2016-11-19T19:26:01.416009 #114869]  INFO -- default-centos-71:     +#
+I, [2016-11-19T19:26:01.416028 #114869]  INFO -- default-centos-71:     +# Mandatory: no
+I, [2016-11-19T19:26:01.416066 #114869]  INFO -- default-centos-71:     - change mode from '' to '0644'
+I, [2016-11-19T19:26:01.416085 #114869]  INFO -- default-centos-71:     - change owner from '' to 'root'
+I, [2016-11-19T19:26:01.416103 #114869]  INFO -- default-centos-71:     - change group from '' to 'root'
+I, [2016-11-19T19:26:01.543223 #114869]  INFO -- default-centos-71:   * service[zabbix-agent] action start
+I, [2016-11-19T19:26:01.543312 #114869]  INFO -- default-centos-71:     - start service service[zabbix-agent]
+I, [2016-11-19T19:26:02.631018 #114869]  INFO -- default-centos-71:   * service[zabbix-server] action start
+I, [2016-11-19T19:26:02.631100 #114869]  INFO -- default-centos-71:     - start service service[zabbix-server]
+I, [2016-11-19T19:26:03.650426 #114869]  INFO -- default-centos-71: 
+I, [2016-11-19T19:26:03.650730 #114869]  INFO -- default-centos-71: Running handlers:
+I, [2016-11-19T19:26:03.650776 #114869]  INFO -- default-centos-71: Running handlers complete
+I, [2016-11-19T19:26:03.650798 #114869]  INFO -- default-centos-71: Chef Client finished, 25/27 resources updated in 26 minutes 58 seconds
+I, [2016-11-19T19:26:04.855176 #114869]  INFO -- default-centos-71: Finished converging <default-centos-71> (30m28.25s).
+I, [2016-11-19T19:26:04.860425 #114869]  INFO -- default-centos-71: -----> Setting up <default-centos-71>...
+I, [2016-11-19T19:26:04.861886 #114869]  INFO -- default-centos-71: Finished setting up <default-centos-71> (0m0.00s).
+I, [2016-11-19T19:26:04.861975 #114869]  INFO -- default-centos-71: -----> Verifying <default-centos-71>...
+I, [2016-11-19T19:26:04.862622 #114869]  INFO -- default-centos-71: Preparing files for transfer
+I, [2016-11-19T19:26:06.631686 #114869]  INFO -- default-centos-71: -----> Installing Busser (busser)
+I, [2016-11-19T19:26:14.656357 #114869]  INFO -- default-centos-71: Fetching: thor-0.19.0.gemFetching: thor-0.19.0.gem (  3%)Fetching: thor-0.19.0.gem (  6%)Fetching: thor-0.19.0.gem (  9%)Fetching: thor-0.19.0.gem ( 12%)Fetching: thor-0.19.0.gem ( 15%)Fetching: thor-0.19.0.gem ( 17%)Fetching: thor-0.19.0.gem ( 20%)Fetching: thor-0.19.0.gem ( 23%)Fetching: thor-0.19.0.gem ( 26%)Fetching: thor-0.19.0.gem ( 29%)Fetching: thor-0.19.0.gem ( 32%)Fetching: thor-0.19.0.gem ( 35%)Fetching: thor-0.19.0.gem ( 53%)Fetching: thor-0.19.0.gem ( 71%)Fetching: thor-0.19.0.gem ( 89%)Fetching: thor-0.19.0.gem (100%)Fetching: thor-0.19.0.gem (100%)
+I, [2016-11-19T19:26:14.883322 #114869]  INFO -- default-centos-71: Successfully installed thor-0.19.0
+I, [2016-11-19T19:26:15.087843 #114869]  INFO -- default-centos-71: Fetching: busser-0.7.1.gemFetching: busser-0.7.1.gem ( 64%)Fetching: busser-0.7.1.gem (100%)Fetching: busser-0.7.1.gem (100%)
+I, [2016-11-19T19:26:15.203487 #114869]  INFO -- default-centos-71: Successfully installed busser-0.7.1
+I, [2016-11-19T19:26:15.203563 #114869]  INFO -- default-centos-71: 2 gems installed
+I, [2016-11-19T19:26:15.208643 #114869]  INFO -- default-centos-71: Installing Busser plugins: busser-serverspec
+I, [2016-11-19T19:26:19.328434 #114869]  INFO -- default-centos-71: Plugin serverspec installed (version 0.5.10)
+I, [2016-11-19T19:26:19.328813 #114869]  INFO -- default-centos-71: -----> Running postinstall for serverspec plugin
+I, [2016-11-19T19:26:20.326242 #114869]  INFO -- default-centos-71: Suite path directory /tmp/verifier/suites does not exist, skipping.
+I, [2016-11-19T19:26:20.330277 #114869]  INFO -- default-centos-71: Transferring files to <default-centos-71>
+I, [2016-11-19T19:26:20.657289 #114869]  INFO -- default-centos-71: -----> Running serverspec test suite
+I, [2016-11-19T19:26:20.669266 #114869]  INFO -- default-centos-71: -----> Installing Serverspec..
+I, [2016-11-19T19:26:22.037786 #114869]  INFO -- default-centos-71: Fetching: diff-lcs-1.2.5.gemFetching: diff-lcs-1.2.5.gem (  4%)Fetching: diff-lcs-1.2.5.gem ( 10%)Fetching: diff-lcs-1.2.5.gem ( 16%)Fetching: diff-lcs-1.2.5.gem ( 21%)Fetching: diff-lcs-1.2.5.gem ( 27%)Fetching: diff-lcs-1.2.5.gem ( 32%)Fetching: diff-lcs-1.2.5.gem ( 38%)Fetching: diff-lcs-1.2.5.gem ( 43%)Fetching: diff-lcs-1.2.5.gem ( 49%)Fetching: diff-lcs-1.2.5.gem ( 55%)Fetching: diff-lcs-1.2.5.gem ( 60%)Fetching: diff-lcs-1.2.5.gem ( 65%)Fetching: diff-lcs-1.2.5.gem ( 99%)Fetching: diff-lcs-1.2.5.gem (100%)Fetching: diff-lcs-1.2.5.gem (100%)
+I, [2016-11-19T19:26:22.425373 #114869]  INFO -- default-centos-71: Fetching: rspec-expectations-3.5.0.gemFetching: rspec-expectations-3.5.0.gem ( 21%)Fetching: rspec-expectations-3.5.0.gem ( 42%)Fetching: rspec-expectations-3.5.0.gem ( 63%)Fetching: rspec-expectations-3.5.0.gem ( 84%)Fetching: rspec-expectations-3.5.0.gem (100%)Fetching: rspec-expectations-3.5.0.gem (100%)
+I, [2016-11-19T19:26:23.242378 #114869]  INFO -- default-centos-71: Fetching: rspec-mocks-3.5.0.gemFetching: rspec-mocks-3.5.0.gem ( 21%)Fetching: rspec-mocks-3.5.0.gem ( 42%)Fetching: rspec-mocks-3.5.0.gem ( 63%)Fetching: rspec-mocks-3.5.0.gem ( 85%)Fetching: rspec-mocks-3.5.0.gem (100%)Fetching: rspec-mocks-3.5.0.gem (100%)
+I, [2016-11-19T19:26:23.585454 #114869]  INFO -- default-centos-71: Fetching: rspec-3.5.0.gemFetching: rspec-3.5.0.gem (100%)Fetching: rspec-3.5.0.gem (100%)
+I, [2016-11-19T19:26:24.288137 #114869]  INFO -- default-centos-71: Fetching: rspec-its-1.2.0.gemFetching: rspec-its-1.2.0.gem (100%)Fetching: rspec-its-1.2.0.gem (100%)
+I, [2016-11-19T19:26:24.610825 #114869]  INFO -- default-centos-71: Fetching: multi_json-1.12.1.gemFetching: multi_json-1.12.1.gem ( 60%)Fetching: multi_json-1.12.1.gem (100%)Fetching: multi_json-1.12.1.gem (100%)
+I, [2016-11-19T19:26:24.976362 #114869]  INFO -- default-centos-71: Fetching: net-ssh-3.2.0.gemFetching: net-ssh-3.2.0.gem (  9%)Fetching: net-ssh-3.2.0.gem ( 18%)Fetching: net-ssh-3.2.0.gem ( 27%)Fetching: net-ssh-3.2.0.gem ( 35%)Fetching: net-ssh-3.2.0.gem ( 44%)Fetching: net-ssh-3.2.0.gem ( 53%)Fetching: net-ssh-3.2.0.gem ( 62%)Fetching: net-ssh-3.2.0.gem ( 71%)Fetching: net-ssh-3.2.0.gem ( 80%)Fetching: net-ssh-3.2.0.gem ( 88%)Fetching: net-ssh-3.2.0.gem ( 97%)Fetching: net-ssh-3.2.0.gem (100%)Fetching: net-ssh-3.2.0.gem (100%)
+I, [2016-11-19T19:26:25.758061 #114869]  INFO -- default-centos-71: Fetching: net-scp-1.2.1.gemFetching: net-scp-1.2.1.gem ( 48%)Fetching: net-scp-1.2.1.gem ( 98%)Fetching: net-scp-1.2.1.gem (100%)Fetching: net-scp-1.2.1.gem (100%)
+I, [2016-11-19T19:26:26.182456 #114869]  INFO -- default-centos-71: Fetching: net-telnet-0.1.1.gemFetching: net-telnet-0.1.1.gem ( 92%)Fetching: net-telnet-0.1.1.gem (100%)Fetching: net-telnet-0.1.1.gem (100%)
+I, [2016-11-19T19:26:26.562143 #114869]  INFO -- default-centos-71: Fetching: sfl-2.3.gemFetching: sfl-2.3.gem (100%)Fetching: sfl-2.3.gem (100%)
+I, [2016-11-19T19:26:26.962358 #114869]  INFO -- default-centos-71: Fetching: specinfra-2.66.0.gemFetching: specinfra-2.66.0.gem ( 19%)Fetching: specinfra-2.66.0.gem ( 39%)Fetching: specinfra-2.66.0.gem ( 59%)Fetching: specinfra-2.66.0.gem ( 78%)Fetching: specinfra-2.66.0.gem ( 98%)Fetching: specinfra-2.66.0.gem (100%)Fetching: specinfra-2.66.0.gem (100%)
+I, [2016-11-19T19:26:27.502351 #114869]  INFO -- default-centos-71: Fetching: serverspec-2.37.2.gemFetching: serverspec-2.37.2.gem ( 40%)Fetching: serverspec-2.37.2.gem ( 82%)Fetching: serverspec-2.37.2.gem (100%)Fetching: serverspec-2.37.2.gem (100%)
+I, [2016-11-19T19:26:27.683885 #114869]  INFO -- default-centos-71: -----> serverspec installed (version 2.37.2)
+I, [2016-11-19T19:26:27.819643 #114869]  INFO -- default-centos-71: /opt/chef/embedded/bin/ruby -I/tmp/verifier/suites/serverspec -I/tmp/verifier/gems/gems/rspec-support-3.5.0/lib:/tmp/verifier/gems/gems/rspec-core-3.5.4/lib /opt/chef/embedded/bin/rspec --pattern /tmp/verifier/suites/serverspec/\*\*/\*_spec.rb --color --format documentation --default-path /tmp/verifier/suites/serverspec
+I, [2016-11-19T19:26:28.182379 #114869]  INFO -- default-centos-71: 
+I, [2016-11-19T19:26:28.182447 #114869]  INFO -- default-centos-71: File "/etc/yum.repos.d/zabbix.repo"
+I, [2016-11-19T19:26:28.257549 #114869]  INFO -- default-centos-71: [32m  should be file[0m
+I, [2016-11-19T19:26:28.257618 #114869]  INFO -- default-centos-71: 
+I, [2016-11-19T19:26:28.257640 #114869]  INFO -- default-centos-71: File "/etc/yum.repos.d/mysql-community-source.repo"
+I, [2016-11-19T19:26:28.262151 #114869]  INFO -- default-centos-71: [32m  should be file[0m
+I, [2016-11-19T19:26:28.262207 #114869]  INFO -- default-centos-71: 
+I, [2016-11-19T19:26:28.262229 #114869]  INFO -- default-centos-71: File "/etc/yum.repos.d/mysql-community.repo"
+I, [2016-11-19T19:26:28.266791 #114869]  INFO -- default-centos-71: [32m  should be file[0m
+I, [2016-11-19T19:26:28.266847 #114869]  INFO -- default-centos-71: 
+I, [2016-11-19T19:26:28.266869 #114869]  INFO -- default-centos-71: File "/etc/zabbix/zabbix_agentd.conf"
+I, [2016-11-19T19:26:28.274376 #114869]  INFO -- default-centos-71: [32m  should be file[0m
+I, [2016-11-19T19:26:28.279077 #114869]  INFO -- default-centos-71: [32m  should exist[0m
+I, [2016-11-19T19:26:28.279145 #114869]  INFO -- default-centos-71: 
+I, [2016-11-19T19:26:28.279170 #114869]  INFO -- default-centos-71: File "/etc/zabbix/zabbix_agentd.conf"
+I, [2016-11-19T19:26:28.279326 #114869]  INFO -- default-centos-71:   content
+I, [2016-11-19T19:26:28.287090 #114869]  INFO -- default-centos-71: [32m    should match /Server=192.168.103.242/[0m
+I, [2016-11-19T19:26:28.287152 #114869]  INFO -- default-centos-71:   content
+I, [2016-11-19T19:26:28.287175 #114869]  INFO -- default-centos-71: [32m    should match /ServerActive=192.168.103.242/[0m
+I, [2016-11-19T19:26:28.287194 #114869]  INFO -- default-centos-71: 
+I, [2016-11-19T19:26:28.287213 #114869]  INFO -- default-centos-71: File "/etc/zabbix/zabbix_agentd.conf"
+I, [2016-11-19T19:26:28.299879 #114869]  INFO -- default-centos-71: [32m  should be owned by "root"[0m
+I, [2016-11-19T19:26:28.306272 #114869]  INFO -- default-centos-71: [32m  should be grouped into "root"[0m
+I, [2016-11-19T19:26:28.316256 #114869]  INFO -- default-centos-71: [32m  should be readable[0m
+I, [2016-11-19T19:26:28.317174 #114869]  INFO -- default-centos-71: [32m  should be readable[0m
+I, [2016-11-19T19:26:28.321746 #114869]  INFO -- default-centos-71: [32m  should be readable[0m
+I, [2016-11-19T19:26:28.355754 #114869]  INFO -- default-centos-71: [32m  should be readable[0m
+I, [2016-11-19T19:26:28.363831 #114869]  INFO -- default-centos-71: [32m  should be writable[0m
+I, [2016-11-19T19:26:28.363892 #114869]  INFO -- default-centos-71: 
+I, [2016-11-19T19:26:28.363915 #114869]  INFO -- default-centos-71: Service "zabbix-agent"
+I, [2016-11-19T19:26:28.376499 #114869]  INFO -- default-centos-71: [32m  should be running[0m
+I, [2016-11-19T19:26:28.376572 #114869]  INFO -- default-centos-71: 
+I, [2016-11-19T19:26:28.376600 #114869]  INFO -- default-centos-71: Finished in 0.19755 seconds (files took 0.29977 seconds to load)
+I, [2016-11-19T19:26:28.376620 #114869]  INFO -- default-centos-71: [32m15 examples, 0 failures[0m
+I, [2016-11-19T19:26:28.376639 #114869]  INFO -- default-centos-71: 
+I, [2016-11-19T19:26:28.401304 #114869]  INFO -- default-centos-71: Finished verifying <default-centos-71> (0m23.54s).
+I, [2016-11-19T19:26:28.401907 #114869]  INFO -- default-centos-71: -----> Destroying <default-centos-71>...
+I, [2016-11-19T19:26:30.017297 #114869]  INFO -- default-centos-71: UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+I, [2016-11-19T19:26:30.017522 #114869]  INFO -- default-centos-71: root                114967              114952              0                   18:55               ?                   00:00:00            /usr/sbin/init
+I, [2016-11-19T19:26:30.017555 #114869]  INFO -- default-centos-71: root                115003              114967              0                   18:55               ?                   00:00:00            /usr/lib/systemd/systemd-journald
+I, [2016-11-19T19:26:30.017583 #114869]  INFO -- default-centos-71: root                115016              114967              0                   18:55               ?                   00:00:00            /usr/lib/systemd/systemd-udevd
+I, [2016-11-19T19:26:30.017609 #114869]  INFO -- default-centos-71: dbus                115048              114967              0                   18:55               ?                   00:00:00            /bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+I, [2016-11-19T19:26:30.017636 #114869]  INFO -- default-centos-71: root                115065              114967              0                   18:55               ?                   00:00:00            /usr/lib/systemd/systemd-logind
+I, [2016-11-19T19:26:30.017865 #114869]  INFO -- default-centos-71: root                115068              114967              0                   18:55               tty1                00:00:00            /sbin/agetty --noclear tty1 linux
+I, [2016-11-19T19:26:30.017894 #114869]  INFO -- default-centos-71: root                115095              114967              0                   18:55               ?                   00:00:00            /usr/sbin/sshd -D
+I, [2016-11-19T19:26:30.017920 #114869]  INFO -- default-centos-71: root                115117              115095              0                   18:55               ?                   00:00:00            sshd: kitchen [priv]
+I, [2016-11-19T19:26:30.017946 #114869]  INFO -- default-centos-71: tarasgo+            116187              115117              0                   18:55               ?                   00:00:00            sshd: kitchen@pts/0
+I, [2016-11-19T19:26:30.017971 #114869]  INFO -- default-centos-71: 27                  116916              114967              0                   19:04               ?                   00:00:00            /bin/sh /usr/bin/mysqld_safe
+I, [2016-11-19T19:26:30.017999 #114869]  INFO -- default-centos-71: 27                  117069              116916              0                   19:04               ?                   00:00:03            /usr/sbin/mysqld --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib64/mysql/plugin --log-error=/var/log/mysqld.log --pid-file=/var/run/mysqld/mysqld.pid --socket=/var/lib/mysql/mysql.sock
+I, [2016-11-19T19:26:30.018022 #114869]  INFO -- default-centos-71: root                117427              114967              0                   19:25               ?                   00:00:00            /usr/sbin/httpd -DFOREGROUND
+I, [2016-11-19T19:26:30.018065 #114869]  INFO -- default-centos-71: 48                  117428              117427              0                   19:26               ?                   00:00:00            /usr/sbin/httpd -DFOREGROUND
+I, [2016-11-19T19:26:30.018089 #114869]  INFO -- default-centos-71: 48                  117429              117427              0                   19:26               ?                   00:00:00            /usr/sbin/httpd -DFOREGROUND
+I, [2016-11-19T19:26:30.018115 #114869]  INFO -- default-centos-71: 48                  117430              117427              0                   19:26               ?                   00:00:00            /usr/sbin/httpd -DFOREGROUND
+I, [2016-11-19T19:26:30.018137 #114869]  INFO -- default-centos-71: 48                  117431              117427              0                   19:26               ?                   00:00:00            /usr/sbin/httpd -DFOREGROUND
+I, [2016-11-19T19:26:30.018169 #114869]  INFO -- default-centos-71: 48                  117432              117427              0                   19:26               ?                   00:00:00            /usr/sbin/httpd -DFOREGROUND
+I, [2016-11-19T19:26:30.018191 #114869]  INFO -- default-centos-71: 996                 117469              114967              0                   19:26               ?                   00:00:00            /usr/sbin/zabbix_agentd -c /etc/zabbix/zabbix_agentd.conf
+I, [2016-11-19T19:26:30.018218 #114869]  INFO -- default-centos-71: 996                 117470              117469              0                   19:26               ?                   00:00:00            /usr/sbin/zabbix_agentd: collector [idle 1 sec]
+I, [2016-11-19T19:26:30.018240 #114869]  INFO -- default-centos-71: 996                 117471              117469              0                   19:26               ?                   00:00:00            /usr/sbin/zabbix_agentd: listener #1 [waiting for connection]
+I, [2016-11-19T19:26:30.018264 #114869]  INFO -- default-centos-71: 996                 117472              117469              0                   19:26               ?                   00:00:00            /usr/sbin/zabbix_agentd: listener #2 [waiting for connection]
+I, [2016-11-19T19:26:30.018870 #114869]  INFO -- default-centos-71: 996                 117473              117469              0                   19:26               ?                   00:00:00            /usr/sbin/zabbix_agentd: listener #3 [waiting for connection]
+I, [2016-11-19T19:26:30.018898 #114869]  INFO -- default-centos-71: 996                 117474              117469              0                   19:26               ?                   00:00:00            /usr/sbin/zabbix_agentd: active checks #1 [idle 1 sec]
+I, [2016-11-19T19:26:34.193497 #114869]  INFO -- default-centos-71: 965942427d42f3613b342a9caf42814c689027e853c1ee5e991e6120604d3352
+I, [2016-11-19T19:26:36.394310 #114869]  INFO -- default-centos-71: 965942427d42f3613b342a9caf42814c689027e853c1ee5e991e6120604d3352
+I, [2016-11-19T19:26:36.406588 #114869]  INFO -- default-centos-71: Finished destroying <default-centos-71> (0m8.00s).
+I, [2016-11-19T19:26:36.406840 #114869]  INFO -- default-centos-71: Finished testing <default-centos-71> (31m24.96s).

@@ -1,0 +1,12 @@
+I, [2016-11-09T17:53:30.302882 #61902]  INFO -- default-centos-72: -----> Destroying <default-centos-72>...
+I, [2016-11-09T17:53:30.559501 #61902]  INFO -- default-centos-72: UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+I, [2016-11-09T17:53:30.559639 #61902]  INFO -- default-centos-72: root                60049               60035               0                   17:26               ?                   00:00:00            /usr/sbin/init
+I, [2016-11-09T17:53:30.559667 #61902]  INFO -- default-centos-72: root                60082               60049               0                   17:26               ?                   00:00:00            /usr/lib/systemd/systemd-journald
+I, [2016-11-09T17:53:30.559693 #61902]  INFO -- default-centos-72: root                60092               60049               0                   17:26               ?                   00:00:00            /usr/lib/systemd/systemd-udevd
+I, [2016-11-09T17:53:30.559716 #61902]  INFO -- default-centos-72: root                60123               60049               0                   17:26               ?                   00:00:00            /usr/lib/systemd/systemd-logind
+I, [2016-11-09T17:53:30.559738 #61902]  INFO -- default-centos-72: dbus                60124               60049               0                   17:26               ?                   00:00:00            /bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+I, [2016-11-09T17:53:30.559763 #61902]  INFO -- default-centos-72: root                60127               60049               0                   17:26               tty1                00:00:00            /sbin/agetty --noclear tty1 linux
+I, [2016-11-09T17:53:30.559785 #61902]  INFO -- default-centos-72: root                60143               60049               0                   17:26               ?                   00:00:00            /usr/sbin/sshd -D
+I, [2016-11-09T17:53:31.568480 #61902]  INFO -- default-centos-72: 70e370afc6310c7e19d390a58905143769c4db8fbe57d33f92fe2cacab96cb7f
+I, [2016-11-09T17:53:33.891145 #61902]  INFO -- default-centos-72: 70e370afc6310c7e19d390a58905143769c4db8fbe57d33f92fe2cacab96cb7f
+I, [2016-11-09T17:53:33.903799 #61902]  INFO -- default-centos-72: Finished destroying <default-centos-72> (0m3.60s).
