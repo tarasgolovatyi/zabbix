@@ -39,8 +39,8 @@ describe file('/etc/zabbix/zabbix_agentd.conf') do
 end
 
 describe file('/etc/zabbix/zabbix_agentd.conf') do
-  it { should be_owned_by 'root' }
-  it { should be_grouped_into 'root' }
+  it { should be_owned_by 'zabbix' }
+  it { should be_grouped_into 'zabbix' }
   it { should be_readable.by('owner') }
   it { should be_readable.by('group') }
   it { should be_readable.by('others') }

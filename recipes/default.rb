@@ -16,7 +16,7 @@ end
 
 package 'mysql-server' do 
    action :install
-   source "/tmp/kitchen/cookbooks/zabbix/files/default/mysql-server.noarch.rpm"
+   source '/tmp/kitchen/cookbooks/zabbix/files/default/mysql-server.noarch.rpm'
    provider Chef::Provider::Package::Rpm
 end
 
@@ -40,14 +40,10 @@ package 'php-pear' do
    action :install
 end
 
-#service 'mysql' do
-#   action :start
+#execute 'run service mysql' do
+#   command "sudo systemctl start mysql"
+#   action :run
 #end
-
-execute 'run service mysql' do
-   command "sudo systemctl start mysql"
-   action :run
-end
 
 bash 'set mysql' do
   action :run
@@ -61,10 +57,9 @@ bash 'set mysql' do
      mysql -u #{node['zabbix_server']['DBUser']} -p#{node['mysql']['zabbix_server']['DBPassword']} #{node['zabbix_server']['DBName']} < /tmp/kitchen/cookbooks/zabbix/files/default/images.sql
   EOH
 end
-#mysql -u zabbixuser -p zabbixdb < /usr/share/doc/zabbix-server-mysql-2.4.5/create/schema.sql
 
 package 'zabbix-agent' do
-  source "/tmp/kitchen/cookbooks/zabbix/files/default/zabbix-3.2.noarch.rpm"
+  source '/tmp/kitchen/cookbooks/zabbix/files/default/zabbix-3.2.noarch.rpm'
   provider Chef::Provider::Package::Rpm
   action :install
 end
@@ -102,8 +97,8 @@ end
 
 template '/etc/zabbix/zabbix_agentd.conf' do
    source 'zabbix_agentd.conf.erb'
-   owner 'root'
-   group 'root'
+   owner 'zabbix'
+   group 'zabbix'
    mode '0644'
 end
 
@@ -113,8 +108,8 @@ end
 
 template '/etc/zabbix/zabbix_java_gateway.conf' do
    source 'zabbix_java_gateway.conf.erb'
-   owner 'root'
-   group 'root'
+   owner 'zabbix'
+   group 'zabbix'
    mode '0644'
 end
 
@@ -124,8 +119,8 @@ end
 
 template '/etc/zabbix/zabbix_server.conf' do
    source 'zabbix_server.conf.erb'
-   owner 'root'
-   group 'root'
+   owner 'zabbix'
+   group 'zabbix'
    mode '0644'
 end
 

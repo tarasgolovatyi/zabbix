@@ -1,5 +1,5 @@
-default['zabbix']['Server'] = '192.168.103.242'
-default['zabbix']['ServerActive'] = '192.168.103.242'
+default['zabbix']['Server'] = '127.0.0.1, 192.168.103.242'
+default['zabbix']['ServerActive'] = '127.0.0.1, 192.168.103.242'
 
 default['zabbix_server']['DebugLevel'] = '4'
 default['zabbix_server']['DBName'] = 'zabbix'
