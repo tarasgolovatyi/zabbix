@@ -6,13 +6,6 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-remote_directory "/home/" do
-   files_mode '0644'
-   files_owner 'root'
-   files_group 'root'
-   source "db_rpm"
-end
-
 package 'httpd' do
    action :install
 end
@@ -22,7 +15,7 @@ package 'httpd-devel' do
 end
 
 rpm_package 'mysql' do 
-   source '/home/mysql-server.noarch.rpm'
+   source 'https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm'
 end
 
 yum_package 'mysql' do
@@ -41,25 +34,29 @@ package 'php-mysql' do
    action :install
 end
 
-yum_package 'php-pear' do
+package 'php-pear' do
    action :install
 end
 
+#execute 'run service mysql' do
+#   command "sudo systemctl start mysql"
+#   action :run
+#end
+
 bash 'set mysql' do
   action :run
-  user 'root'
+  user "root"
   cwd "/tmp"
   code <<-EOH
-    sudo mysql --execute="SET PASSWORD FOR '#{node['mysql']['DBUser']}'@'localhost' = PASSWORD('#{node['mysql']['DBPassword']}');"
+    sudo mysql --execute="SET PASSWORD FOR #{node['mysql']['DBUser']}@'localhost' = PASSWORD('#{node['mysql']['DBPassword']}');"
     mysql -u #{node['mysql']['DBUser']} -p#{node['mysql']['DBPassword']} --execute="CREATE DATABASE #{node['mysql']['DBName']} CHARACTER SET UTF8; GRANT ALL PRIVILEGES on #{node['mysql']['DBName']}.* to #{node['mysql']['zabbix_server']['DBUser']} IDENTIFIED BY '#{node['mysql']['zabbix_server']['DBPassword']}'; FLUSH PRIVILEGES;"
-    mysql -u #{node['zabbix_server']['DBUser']} -p#{node['mysql']['zabbix_server']['DBPassword']} #{node['zabbix_server']['DBName']} < /home/schema.sql
-    mysql -u #{node['zabbix_server']['DBUser']} -p#{node['mysql']['zabbix_server']['DBPassword']} #{node['zabbix_server']['DBName']} < /home/data.sql
-    mysql -u #{node['zabbix_server']['DBUser']} -p#{node['mysql']['zabbix_server']['DBPassword']} #{node['zabbix_server']['DBName']} < /home/images.sql
+    mysql -u #{node['zabbix_server']['DBUser']} -p#{node['mysql']['zabbix_server']['DBPassword']} #{node['zabbix_server']['DBName']} < /tmp/kitchen/cookbooks/zabbix/files/default/schema.sql
+    mysql -u #{node['zabbix_server']['DBUser']} -p#{node['mysql']['zabbix_server']['DBPassword']} #{node['zabbix_server']['DBName']} < /tmp/kitchen/cookbooks/zabbix/files/default/data.sql
+     mysql -u #{node['zabbix_server']['DBUser']} -p#{node['mysql']['zabbix_server']['DBPassword']} #{node['zabbix_server']['DBName']} < /tmp/kitchen/cookbooks/zabbix/files/default/images.sql
   EOH
 end
-
 rpm_package 'zabbix' do
-  source '/home/zabbix-3.2.noarch.rpm'
+  source 'https://repo.zabbix.com/zabbix/3.2/rhel/7/x86_64/zabbix-release-3.2-1.el7.noarch.rpm'
 end
 
 package 'zabbix-agent' do 
@@ -128,8 +125,4 @@ end
 
 service 'zabbix-server' do
    action :start
-end
-
-file ['/home/data.sql', '/home/images.sql', '/home/schema.sql', '/home/mysql-server.noarch.rpm', '/home/zabbix-3.2.noarch.rpm'] do
-   action :delete
 end

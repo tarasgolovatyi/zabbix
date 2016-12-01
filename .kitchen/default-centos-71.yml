@@ -2,7 +2,7 @@
 username: kitchen
 ssh_key: "/home/tarasgolovatyj/chef-repo/cookbooks/zabbix/.kitchen/docker_id_rsa"
 image_id: 6a254e69e6b8
-container_id: 4fa74af270d8ff591f5b1ae6e55b064ce8305dac572e1f73f3dc4bc678c0ab60
+container_id: 8326d99e7dbd1214c8a496700dfebe2a3447805ec5afd95ba5f188e896410c37
 hostname: localhost
-port: 32774
+port: 32802
 last_action: setup

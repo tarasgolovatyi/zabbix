@@ -34,11 +34,6 @@ describe file('/etc/zabbix/zabbix_agentd.conf') do
   it { should exist }
 end
 describe file('/etc/zabbix/zabbix_agentd.conf') do
-  its(:content) { should match /Server=192.168.103.242/ }
-  its(:content) { should match /ServerActive=192.168.103.242/ }
-end
-
-describe file('/etc/zabbix/zabbix_agentd.conf') do
   it { should be_owned_by 'zabbix' }
   it { should be_grouped_into 'zabbix' }
   it { should be_readable.by('owner') }
